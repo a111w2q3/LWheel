@@ -298,50 +298,158 @@
         }
     </style>
     <style>
-        :root { --lw-bg-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-base-image: url('image/wheel_base.png'); background-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-shell-image: url('image/fifa/wheel_shell.png'); --lw-wheel-seg-1-start: #bfff48; --lw-wheel-seg-1-end: #73d358; --lw-wheel-seg-2-start: #f18080; --lw-wheel-seg-2-end: #ef2227; --lw-wheel-seg-3-start: #72def1; --lw-wheel-seg-3-end: #3b69d9; --lw-wheel-lose-seg-start: #8a7a96; --lw-wheel-lose-seg-end: #4e4358; }
+        :root { --lw-bg-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-base-image: url('image/wheel_base.png'); --lw-wheel-shell-image: url('image/fifa/wheel_shell.png'); --lw-wheel-seg-1-start: #bfff48; --lw-wheel-seg-1-end: #73d358; --lw-wheel-seg-2-start: #f18080; --lw-wheel-seg-2-end: #ef2227; --lw-wheel-seg-3-start: #72def1; --lw-wheel-seg-3-end: #3b69d9; --lw-wheel-lose-seg-start: #8a7a96; --lw-wheel-lose-seg-end: #4e4358; --fifa-panel-bg: rgba(2, 14, 24, .8); --fifa-red: #c60033; --fifa-red-dark: #970027; --fifa-spin-bg-size: 150px; --fifa-spin-btn-size: 74px; --fifa-chance-w: min(650px, 86vw); --fifa-chance-h: clamp(72px, 11vw, 121px); --fifa-chance-mt: clamp(-52px, -4.2vw, -18px); --fifa-chance-mb: clamp(-30px, -2vw, -8px); --fifa-chance-pad-bottom: clamp(18px, 3.2vw, 36px); --fifa-action-font: clamp(16px, 2.25vw, 26px); --fifa-action-height: clamp(48px, 5.7vw, 68px); }
 
-        .lwChance { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; width: min(650px, 86vw); min-height: 121px; margin: -52px auto -30px; padding: 0 0 36px; background: var(--lw-chance-bg); background-image: url(image/fifa/gold-ribbon.png); background-size: 100% 100%; box-shadow: none; border: 0; }
-            .lwChance::before, .lwChance::after { display: none; }
-        .lwChance__main strong { color: #000; }
-        .lwChance__main span { color: #000; }
+        /* chance ribbon */
+        .lwChance { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; width: clamp(320px, 40vw, 560px); min-height: var(--fifa-chance-h); margin: var(--fifa-chance-mt) auto var(--fifa-chance-mb); padding: 0 7% var(--fifa-chance-pad-bottom); background-image: url('image/fifa/gold-ribbon.png'); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; box-shadow: none; border: 0; }
 
-        .lwWheelWrap::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 6; width: 184px; height: 184px; transform: translate(-50%, -50%); background-image: url("image/fifa/spin_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; pointer-events: none; filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
+            .lwChance::before,
+            .lwChance::after { display: none; }
 
-        .lwPointer { top: 28%; left: 50%; z-index: 8; width: 70px; height: 110px; transform: translateX(-50%) rotate(180deg); }
+        .lwChance__main { align-items: baseline; gap: clamp(4px, 1vw, 8px); white-space: nowrap; }
 
-        .lwSpinBtn-Con { position: absolute; left: 50%; top: 50%; z-index: 9; width: 74px; height: 74px; transform: translate(-50%, -50%); display: grid; place-items: center; }
+            .lwChance__main strong { color: #000; font-size: clamp(22px, 4.2vw, 38px); line-height: 1; text-shadow: none; }
 
-        .lwSpinBtn { position: relative; z-index: 1; width: 100px; height: 100px; left: auto; top: auto; transform: none; border: 0; border-radius: 50%; color: #fff; background: linear-gradient(to right, #e63c3b, #800000); box-shadow: none; }
+            .lwChance__main span { color: #000; font-size: clamp(10px, 1.7vw, 14px); font-weight: 700; letter-spacing: 0; }
+
+        /* center spin layers */
+        .lwWheelWrap::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 6; width: var(--fifa-spin-bg-size); height: var(--fifa-spin-bg-size); transform: translate(-50%, -50%); background-image: url("image/fifa/spin_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; pointer-events: none; filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
+
+        .lwPointer { top: 30%; left: 50%; z-index: 8; width: clamp(42px, 6.5vw, 70px); height: clamp(66px, 10vw, 110px); transform: translateX(-50%) rotate(180deg); }
+
+        .lwSpinBtn-Con { position: absolute; left: 50%; top: 50%; z-index: 9; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: translate(-50%, -50%); display: grid; place-items: center; }
+
+        .lwSpinBtn { position: relative; z-index: 1; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); left: auto; top: auto; transform: none; border: 0; border-radius: 50%; color: #fff; background: linear-gradient(to right, #e63c3b, #800000); box-shadow: none; font-size: clamp(10px, 1.35vw, 13px); line-height: 1.05; letter-spacing: -.02em; }
 
             .lwSpinBtn:active { transform: scale(.96); }
-        .lwSpinBtn { position: absolute; z-index: 9; width: 100px; height: 100px; left: auto; top: auto; transform: none; border: 0; border-radius: 50%; color: #fff; background: linear-gradient(to right, #e63c3b, #800000); box-shadow: none; }
 
-            .lwSpinBtn:active { transform: scale(.96); }
+        /* spin action buttons */
+        .lwSpinActions { width: min(560px, 92%); gap: clamp(8px, 1.6vw, 14px); }
 
-        .lwSpinActions { width: min(560px, 92%); }
-        .lwSpinAction { border: 0; border-radius: 0; background-size: 100% 100%; color: #fff; font-size: 26px; min-height: 68px; }
+        .lwSpinAction { min-height: var(--fifa-action-height); padding: 0 18px; border: 0; border-radius: 0; background-size: 100% 100%; background-repeat: no-repeat; background-position: center; color: #fff; font-size: var(--fifa-action-font); line-height: 1; letter-spacing: .02em; white-space: nowrap; }
+
+            .lwSpinAction:disabled { cursor: not-allowed; filter: brightness(.68) saturate(.9); }
+
         .lwSpinAction--single { background-image: url('image/fifa/img-btn-red.png'); }
-        .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); }
 
-        .lwPanel::before { display: none; }
+        .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
 
+        /* history panel */
+        .lwPanel { background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); }
 
-        .lwhead__container { background-image: url('image/fifa/img-trophy.png'); background-repeat: no-repeat; background-position: center; margin-top: -165px; }
-        .lwPanel__head h2 { padding-top: 140px; padding-bottom: 30px; color: #fff; font-size: 16px; letter-spacing: 0; }
-        .lwPanel__head { margin: 0; }
+            .lwPanel::before { display: none; }
+
+        .lwPanel__head { margin: 0 0 8px; }
+
             .lwPanel__head::after { display: none; }
-        .lwPanel { background: rgba(2, 14, 24,0.8); border-color: #970027; }
 
-        .lwTnc { border-color: #970027; margin-top: 28px; background: rgba(2, 14, 24,0.8); }
+        .lwhead__container { min-height: clamp(92px, 16vw, 150px); margin-top: clamp(-100px, -10vw, -40px); background-image: url('image/fifa/img-trophy.png'); background-repeat: no-repeat; background-position: center top; background-size: contain; display: flex; align-items: flex-end; justify-content: center; }
+
+        .lwPanel__head h2 { margin: 0; padding: 0 0 clamp(12px, 2.2vw, 22px); color: #fff; font-family: Arial, sans-serif; font-size: clamp(12px, 1.45vw, 16px); line-height: 1; letter-spacing: 0; text-transform: uppercase; }
+
+        /* TNC */
+        .lwTnc { margin-top: 32px; background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); overflow: visible; }
+
             .lwTnc::before { display: none; }
 
-        .lwTnc__head { position: relative; width: min(430px, calc(100% - 28px)); min-height: 56px; margin: -1px auto 0; padding: 0 56px; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 38%), linear-gradient(180deg, #d8003b 0%, #c60033 48%, #970027 100%); border: 1px solid rgba(255, 60, 100, .65); clip-path: polygon( 6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50% ); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -3px 0 rgba(80, 0, 20, .28), 0 10px 22px rgba(0, 0, 0, .28); margin-top: -28px; }
+        .lwTnc__head { position: relative; width: min(430px, calc(100% - 28px)); min-height: clamp(44px, 5.2vw, 56px); margin: -28px auto 0; padding: 0 clamp(34px, 5vw, 56px); display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 38%), linear-gradient(180deg, #d8003b 0%, #c60033 48%, #970027 100%); border: 1px solid rgba(255, 60, 100, .65); clip-path: polygon(6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -3px 0 rgba(80, 0, 20, .28), 0 10px 22px rgba(0, 0, 0, .28); }
 
             .lwTnc__head::before { content: ""; position: absolute; inset: 6px 12px; clip-path: inherit; border: 1px solid rgba(255, 255, 255, .08); pointer-events: none; }
 
             .lwTnc__head::after { content: none; }
 
-            .lwTnc__head h2 { position: relative; z-index: 1; margin: 0; color: #fff; font-family: Arial, sans-serif; font-size: 22px; line-height: 1; font-weight: 900; letter-spacing: .04em; text-align: center; text-transform: uppercase; text-shadow: 0 2px 0 rgba(60, 0, 18, .55), 0 4px 10px rgba(0, 0, 0, .35); }
+            .lwTnc__head h2 { position: relative; z-index: 1; margin: 0; color: #fff; font-family: Arial, sans-serif; font-size: clamp(15px, 2.2vw, 22px); line-height: 1; font-weight: 900; letter-spacing: .035em; text-align: center; text-transform: uppercase; white-space: nowrap; text-shadow: 0 2px 0 rgba(60, 0, 18, .55), 0 4px 10px rgba(0, 0, 0, .35); }
+
+        .lwSpinNote { font-size: 22px; width: auto; }
+        .lwStage { isolation: isolate; }
+
+            .lwStage::before,
+            .lwStage::after { content: ""; position: absolute; z-index: 0; pointer-events: none; background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .35)); opacity: .95; border-radius: 0; width: clamp(130px, 17vw, 204px); height: clamp(165px, 21.6vw, 259px); background-image: url('image/fifa/img-flag.png'); }
+
+            /* 后方漂浮物 1 */
+            .lwStage::before { left: -10%; top: 0%; animation: lwFloatBackOne 5.2s ease-in-out infinite; }
+
+            /* 后方漂浮物 2 */
+            .lwStage::after { right: -10%; top: 0%; background-image: url('image/fifa/img-flag.png'); animation: lwFloatBackTwo 6s ease-in-out infinite; }
+
+        .lwWheelShell::after { content: ""; position: absolute; right: 0%; bottom: 12%; z-index: 9; width: clamp(60px, 13vw, 120px); height: clamp(60px, 13vw, 120px); background-image: url('image/fifa/img-ball.png'); background-repeat: no-repeat; background-position: center; background-size: contain; pointer-events: none; filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .38)); animation: lwFloatFront 4.8s ease-in-out infinite; }
+
+        @keyframes lwFloatBackOne {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+
+            50% { transform: translate3d(0, -14px, 0); }
+        }
+
+        @keyframes lwFloatBackTwo {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+
+            50% { transform: translate3d(0, -18px, 0); }
+        }
+
+        @keyframes lwFloatFront {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+
+            50% { transform: translate3d(0, -12px, 0); }
+        }
+
+        /* responsive theme fixes */
+        @media (max-width: 1080px) {
+            :root { --fifa-spin-bg-size: 128px; --fifa-spin-btn-size: 64px; --fifa-chance-w: min(540px, 88vw); }
+
+            .lwLayout { grid-template-columns: minmax(430px, 1fr) minmax(220px, 340px); }
+
+            .lwSpinActions { width: min(480px, 92%); }
+
+            .lwSpinNote { font-size: 16px; }
+
+            .lwPanel { height: 460px; }
+        }
+
+        @media (max-width: 767px) {
+            :root { --fifa-spin-bg-size: 110px; --fifa-spin-btn-size: 56px; --fifa-chance-w: min(390px, 96vw); --fifa-chance-h: clamp(58px, 16vw, 78px); --fifa-chance-mt: -10px; --fifa-chance-mb: -4px; --fifa-chance-pad-bottom: clamp(12px, 4vw, 20px); --fifa-action-font: clamp(13px, 4.2vw, 18px); --fifa-action-height: clamp(44px, 12vw, 54px); }
+
+            .lwTitle img { max-width: min(330px, 92vw); height: auto; }
+
+            .lwPointer { top: 29%; width: 42px; height: 66px; }
+
+            .lwChance { padding-inline: 8%; background-size: 100% 100%; }
+
+            .lwChance__main strong { font-size: clamp(22px, 7vw, 30px); }
+
+            .lwChance__main span { font-size: clamp(9px, 3vw, 12px); }
+
+            .lwSpinActions { width: min(360px, 94vw); gap: 8px; }
+
+            .lwSpinAction { padding-inline: 10px; letter-spacing: 0; }
+
+            .lwhead__container { min-height: 96px; margin-top: -38px; background-size: auto 96px; }
+
+            .lwPanel__head h2 { padding-bottom: 12px; font-size: 12px; }
+
+            .lwTnc { margin-top: 40px; }
+
+            .lwTnc__head { width: min(360px, calc(100% - 14px)); min-height: 44px; margin-top: -22px; padding-inline: 32px; }
+
+                .lwTnc__head h2 { font-size: clamp(14px, 4.4vw, 17px); letter-spacing: .02em; }
+
+            .lwTnc__list { padding-top: 18px; }
+
+            .lwStage::before { width: 112px; height: 142px; }
+
+            .lwStage::after { width: 112px; height: 142px; }
+        }
+
+        @media (max-width: 380px) {
+            :root { --fifa-spin-bg-size: 98px; --fifa-spin-btn-size: 50px; --fifa-chance-w: 98vw; --fifa-chance-h: 56px; --fifa-action-font: 12px; --fifa-action-height: 42px; }
+
+            .lwChance__main { gap: 4px; }
+
+                .lwChance__main strong { font-size: 20px; }
+
+                .lwChance__main span { font-size: 9px; }
+
+            .lwTnc__head h2 { font-size: 13px; }
+        }
     </style>
 </head>
 
@@ -652,18 +760,18 @@
             winnerHighlight.style.setProperty(
                 "--lw-winner-highlight-bg",
                 `
-                                            conic-gradient(
-                                                from ${-halfAngle}deg,
-                                                rgba(255, 241, 178, 0.00) 0deg,
-                                                rgba(255, 224, 140, 0.08) ${softStart}deg,
-                                                rgba(245, 206, 108, 0.22) ${glowStart}deg,
-                                                rgba(255, 239, 178, 0.34) ${glowCenter}deg,
-                                                rgba(245, 206, 108, 0.22) ${glowEnd}deg,
-                                                rgba(255, 224, 140, 0.08) ${softEnd}deg,
-                                                rgba(255, 241, 178, 0.00) ${segmentAngle}deg,
-                                                transparent ${segmentAngle}deg 360deg
-                                            )
-                                        `
+                                                conic-gradient(
+                                                    from ${-halfAngle}deg,
+                                                    rgba(255, 241, 178, 0.00) 0deg,
+                                                    rgba(255, 224, 140, 0.08) ${softStart}deg,
+                                                    rgba(245, 206, 108, 0.22) ${glowStart}deg,
+                                                    rgba(255, 239, 178, 0.34) ${glowCenter}deg,
+                                                    rgba(245, 206, 108, 0.22) ${glowEnd}deg,
+                                                    rgba(255, 224, 140, 0.08) ${softEnd}deg,
+                                                    rgba(255, 241, 178, 0.00) ${segmentAngle}deg,
+                                                    transparent ${segmentAngle}deg 360deg
+                                                )
+                                            `
             );
         }
         function renderWheel() {
@@ -695,10 +803,10 @@
                 const darkClass = shouldUseDarkText(index) ? " is-dark" : "";
 
                 return `
-                        <div class="lwWheel__label${darkClass}" style="transform: rotate(${labelAngle}deg) translateY(var(--lw-label-distance));">
-                            ${labelText}
-                        </div>
-                    `;
+                            <div class="lwWheel__label${darkClass}" style="transform: rotate(${labelAngle}deg) translateY(var(--lw-label-distance));">
+                                ${labelText}
+                            </div>
+                        `;
             }).join("");
         }
 
@@ -758,45 +866,45 @@
         function renderHistoryList() {
             if (!historyRecords.length) {
                 historyList.innerHTML = `
-                <div class="lwHistoryEmpty">
-                    No spin records yet.<br>
-                    Spin the wheel to create your first record.
-                </div>
-            `;
+                    <div class="lwHistoryEmpty">
+                        No spin records yet.<br>
+                        Spin the wheel to create your first record.
+                    </div>
+                `;
                 return;
             }
 
             historyList.innerHTML = `
-            <div class="lwHistoryTable">
-                <div class="lwHistoryTable__head">
-                    <div>No.</div>
-                    <div>Date Time</div>
-                    <div>Prize</div>
-                </div>
+                <div class="lwHistoryTable">
+                    <div class="lwHistoryTable__head">
+                        <div>No.</div>
+                        <div>Date Time</div>
+                        <div>Prize</div>
+                    </div>
 
-                <div class="lwHistoryTable__body">
-                    ${historyRecords.map((record, index) => {
+                    <div class="lwHistoryTable__body">
+                        ${historyRecords.map((record, index) => {
                 const recordNo = historyRecords.length - index;
 
                 return `
-                            <div class="lwHistoryTable__row">
-                                <div class="lwHistoryTable__no">
-                                    #${String(recordNo).padStart(2, "0")}
-                                </div>
+                                <div class="lwHistoryTable__row">
+                                    <div class="lwHistoryTable__no">
+                                        #${String(recordNo).padStart(2, "0")}
+                                    </div>
 
-                                <div class="lwHistoryTable__time">
-                                    ${record.time}
-                                </div>
+                                    <div class="lwHistoryTable__time">
+                                        ${record.time}
+                                    </div>
 
-                                <div class="lwHistoryTable__prize">
-                                    ${record.reward}
+                                    <div class="lwHistoryTable__prize">
+                                        ${record.reward}
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
             }).join("")}
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
         }
 
 
@@ -886,18 +994,18 @@
                 const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
                 return `
-                                                    <span
-                                                        class="lwPopupConfettiPiece ${shape}"
-                                                        style="
-                                                            animation-delay: ${delay}s;
-                                                            animation-duration: ${duration}s;
-                                                            --confetti-x: ${x}px;
-                                                            --confetti-y: ${y}px;
-                                                            --confetti-rotate: ${rotate}deg;
-                                                            --confetti-color: ${color};
-                                                        "
-                                                    ></span>
-                                                `;
+                                                        <span
+                                                            class="lwPopupConfettiPiece ${shape}"
+                                                            style="
+                                                                animation-delay: ${delay}s;
+                                                                animation-duration: ${duration}s;
+                                                                --confetti-x: ${x}px;
+                                                                --confetti-y: ${y}px;
+                                                                --confetti-rotate: ${rotate}deg;
+                                                                --confetti-color: ${color};
+                                                            "
+                                                        ></span>
+                                                    `;
             }).join("");
 
             window.setTimeout(() => {
@@ -914,31 +1022,31 @@
             popupTitle.textContent = isLose ? "Result" : "You Won";
 
             popupBody.innerHTML = `
-                                                        <div class="lwResult ${isLose ? "lwResult--lose" : "lwResult--win"}">
-                                                            <div class="lwResult__icon">
-                                                                ${prize.icon}
-                                                            </div>
+                                                            <div class="lwResult ${isLose ? "lwResult--lose" : "lwResult--win"}">
+                                                                <div class="lwResult__icon">
+                                                                    ${prize.icon}
+                                                                </div>
 
-                                                            <h3 class="lwResult__title">
-                                                                ${isLose ? "Good Luck" : "Congratulations!"}
-                                                            </h3>
+                                                                <h3 class="lwResult__title">
+                                                                    ${isLose ? "Good Luck" : "Congratulations!"}
+                                                                </h3>
 
-                                                            <div class="lwResult__reward">
-                                                                ${prize.name}
-                                                            </div>
+                                                                <div class="lwResult__reward">
+                                                                    ${prize.name}
+                                                                </div>
 
-                                                            <p class="lwResult__desc">
-                                                                ${isLose
+                                                                <p class="lwResult__desc">
+                                                                    ${isLose
                     ? "No prize this time. Try again and your luck may come next."
                     : "Your reward has been selected. Please claim it according to the event rules."
                 }
-                                                            </p>
+                                                                </p>
 
-                                                            <button class="lwResult__action" type="button" data-close-result>
-                                                                ${isLose ? "Close" : "Claim Now"}
-                                                            </button>
-                                                        </div>
-                                                    `;
+                                                                <button class="lwResult__action" type="button" data-close-result>
+                                                                    ${isLose ? "Close" : "Claim Now"}
+                                                                </button>
+                                                            </div>
+                                                        `;
 
             popup.classList.add("is-open");
             playSound(isLose ? soundLose : soundPopup);
@@ -977,24 +1085,24 @@
             popupTitle.textContent = "Notice";
 
             popupBody.innerHTML = `
-                    <div class="lwResult lwResult--lose">
-                        <div class="lwResult__icon">
-                            ⚠️
+                        <div class="lwResult lwResult--lose">
+                            <div class="lwResult__icon">
+                                ⚠️
+                            </div>
+
+                            <h3 class="lwResult__title">
+                                Not Enough Spin Chance
+                            </h3>
+
+                            <p class="lwResult__desc">
+                                You do not have enough spin chance to continue.
+                            </p>
+
+                            <button class="lwResult__action" type="button" data-close-result>
+                                Close
+                            </button>
                         </div>
-
-                        <h3 class="lwResult__title">
-                            Not Enough Spin Chance
-                        </h3>
-
-                        <p class="lwResult__desc">
-                            You do not have enough spin chance to continue.
-                        </p>
-
-                        <button class="lwResult__action" type="button" data-close-result>
-                            Close
-                        </button>
-                    </div>
-                `;
+                    `;
 
             popup.classList.add("is-open");
             playSound(soundLose);
@@ -1062,35 +1170,35 @@
             popupTitle.textContent = "Spin All Result";
 
             popupBody.innerHTML = `
-                                    <div class="lwResult lwResult--win lwResult--spinAll">
-                                        <h3 class="lwResult__title">
-                                            Spin Completed
-                                        </h3>
+                                        <div class="lwResult lwResult--win lwResult--spinAll">
+                                            <h3 class="lwResult__title">
+                                                Spin Completed
+                                            </h3>
 
-                                        <p class="lwResult__desc">
-                                            Your spin results are listed below.
-                                        </p>
+                                            <p class="lwResult__desc">
+                                                Your spin results are listed below.
+                                            </p>
 
-                                        <div class="lwSpinAllList is-revealing" data-spin-all-list>
-                                ${results.map((prize, index) => {
+                                            <div class="lwSpinAllList is-revealing" data-spin-all-list>
+                                    ${results.map((prize, index) => {
                 return `
-                                        <div
-                                            class="lwSpinAllItem ${prize.type === "lose" ? "is-lose" : ""}"
-                                            style="--reveal-index: ${index};"
-                                        >
-                                            <span class="lwSpinAllItem__index">#${String(index + 1).padStart(2, "0")}</span>
-                                            <span class="lwSpinAllItem__icon">${prize.icon}</span>
-                                            <span class="lwSpinAllItem__name">${prize.name}</span>
-                                        </div>
-                                    `;
+                                            <div
+                                                class="lwSpinAllItem ${prize.type === "lose" ? "is-lose" : ""}"
+                                                style="--reveal-index: ${index};"
+                                            >
+                                                <span class="lwSpinAllItem__index">#${String(index + 1).padStart(2, "0")}</span>
+                                                <span class="lwSpinAllItem__icon">${prize.icon}</span>
+                                                <span class="lwSpinAllItem__name">${prize.name}</span>
+                                            </div>
+                                        `;
             }).join("")}
 </div>
 
-                                        <button class="lwResult__action" type="button" data-close-result>
-                                            Close
-                                        </button>
-                                    </div>
-                                `;
+                                            <button class="lwResult__action" type="button" data-close-result>
+                                                Close
+                                            </button>
+                                        </div>
+                                    `;
 
             popup.classList.add("is-open");
             const spinAllList = popupBody.querySelector("[data-spin-all-list]");
