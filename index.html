@@ -305,304 +305,359 @@
         }
     </style>
     <style>
-        :root { --lw-bg-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-base-image: url('image/wheel_base.png'); --lw-wheel-shell-image: url('image/fifa/wheel_shell.png'); --lw-wheel-seg-1-start: #bfff48; --lw-wheel-seg-1-end: #73d358; --lw-wheel-seg-2-start: #f18080; --lw-wheel-seg-2-end: #ef2227; --lw-wheel-seg-3-start: #72def1; --lw-wheel-seg-3-end: #3b69d9; --lw-wheel-lose-seg-start: #8a7a96; --lw-wheel-lose-seg-end: #4e4358; --fifa-panel-bg: rgba(2, 14, 24, .8); --fifa-red: #c60033; --fifa-red-dark: #970027; --fifa-spin-bg-size: 198px; --fifa-spin-btn-size: 100px; --fifa-chance-w: min(650px, 86vw); --fifa-chance-h: clamp(72px, 11vw, 121px); --fifa-chance-mt: clamp(-52px, -4.2vw, -18px); --fifa-chance-mb: clamp(-30px, -2vw, -8px); --fifa-chance-pad-bottom: clamp(18px, 3.2vw, 36px); --fifa-action-font: clamp(16px, 2.25vw, 26px); --fifa-action-height: clamp(48px, 5.7vw, 68px); }
+            /* =========================================================
+           FIFA THEME - FULL THEME OVERRIDE
+           Replace the old FIFA style blocks with this one.
+        ========================================================= */
 
-        /* chance ribbon */
-        .lwChance { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; width: clamp(320px, 40vw, 560px); min-height: var(--fifa-chance-h); margin: var(--fifa-chance-mt) auto var(--fifa-chance-mb); padding: 0 7% var(--fifa-chance-pad-bottom); background-image: url('image/fifa/gold-ribbon.png'); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; box-shadow: none; border: 0; }
+            :root { --lw-bg-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-base-image: url('image/wheel_base.png'); --lw-wheel-shell-image: url('image/fifa/wheel_shell.png'); --lw-wheel-seg-1-start: #bfff48; --lw-wheel-seg-1-end: #73d358; --lw-wheel-seg-2-start: #f18080; --lw-wheel-seg-2-end: #ef2227; --lw-wheel-seg-3-start: #72def1; --lw-wheel-seg-3-end: #3b69d9; --lw-wheel-lose-seg-start: #8a7a96; --lw-wheel-lose-seg-end: #4e4358; --fifa-panel-bg: rgba(2, 14, 24, .8); --fifa-red: #c60033; --fifa-red-dark: #970027; --fifa-spin-bg-size: clamp(218px, 18.4vw, 254px); --fifa-spin-btn-size: clamp(118px, 10.2vw, 138px); --fifa-chance-h: clamp(72px, 11vw, 121px); --fifa-chance-mt: clamp(-52px, -4.2vw, -18px); --fifa-chance-mb: clamp(-30px, -2vw, -8px); --fifa-chance-pad-bottom: clamp(18px, 3.2vw, 36px); --fifa-action-font: clamp(16px, 2.25vw, 26px); --fifa-action-height: clamp(48px, 5.7vw, 68px); }
 
-            .lwChance::before,
-            .lwChance::after { display: none; }
+            /* =========================================================
+           STAGE DECORATION
+        ========================================================= */
 
-        .lwChance__main { align-items: baseline; gap: clamp(4px, 1vw, 8px); white-space: nowrap; }
+            .lwStage { padding-top: 0; isolation: isolate; }
 
-            .lwChance__main strong { color: #000; font-size: clamp(22px, 4.2vw, 38px); line-height: 1; text-shadow: none; }
+                .lwStage::before,
+                .lwStage::after { content: ""; position: absolute; z-index: 0; pointer-events: none; width: clamp(130px, 17vw, 204px); height: clamp(165px, 21.6vw, 259px); border-radius: 0; opacity: .95; background-image: url('image/fifa/img-flag.png'); background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .35)); }
 
-            .lwChance__main span { color: #000; font-size: clamp(10px, 1.7vw, 14px); font-weight: 700; letter-spacing: 0; }
+                .lwStage::before { left: -10%; top: 0; animation: lwFloatBackOne 5.2s ease-in-out infinite; }
 
-        /* center spin layers */
-        .lwWheelWrap::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 6; width: var(--fifa-spin-bg-size); height: var(--fifa-spin-bg-size); transform: translate(-50%, -50%); background-image: url("image/fifa/spin_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; pointer-events: none; filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
+                .lwStage::after { right: -10%; top: 0; animation: lwFloatBackTwo 6s ease-in-out infinite; }
 
-        .lwPointer { top: 26%; left: 50%; z-index: 8; width: clamp(42px, 6.5vw, 70px); height: clamp(66px, 10vw, 110px); transform: translateX(-50%) rotate(180deg); }
+            @keyframes lwFloatBackOne {
+                0%, 100% { transform: translate3d(0, 0, 0); }
+                50% { transform: translate3d(0, -14px, 0); }
+            }
 
-        .lwSpinBtn-Con { position: absolute; left: 50%; top: 50%; z-index: 9; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: translate(-50%, -50%); display: grid; place-items: center; }
+            @keyframes lwFloatBackTwo {
+                0%, 100% { transform: translate3d(0, 0, 0); }
+                50% { transform: translate3d(0, -18px, 0); }
+            }
 
-        .lwSpinBtn { position: relative; z-index: 1; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); left: auto; top: auto; transform: none; border: 0; border-radius: 50%; color: #fff; background: linear-gradient(to right, #e63c3b, #800000); box-shadow: none; font-size: clamp(10px, 1.35vw, 13px); line-height: 1.05; letter-spacing: -.02em; }
+            @keyframes lwFloatFront {
+                0%, 100% { transform: translate3d(0, 0, 0); }
+                50% { transform: translate3d(0, -12px, 0); }
+            }
 
-            .lwSpinBtn:active { transform: scale(.96); }
+            /* =========================================================
+           WHEEL THEME
+        ========================================================= */
 
-        /* spin action buttons */
-        .lwSpinActions { width: min(560px, 92%); gap: clamp(8px, 1.6vw, 14px); }
+            .lwWheelWrap { width: min(650px, 100%); filter: drop-shadow(0 34px 34px rgba(0, 0, 0, .48)) drop-shadow(0 0 26px rgba(255, 207, 89, .24)); }
 
-        .lwSpinAction { min-height: var(--fifa-action-height); padding: 0 18px; border: 0; border-radius: 0; background-size: 100% 100%; background-repeat: no-repeat; background-position: center; color: #fff; font-size: var(--fifa-action-font); line-height: 1; letter-spacing: .02em; white-space: nowrap; }
+                .lwWheelWrap::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 6; width: var(--fifa-spin-bg-size); height: var(--fifa-spin-bg-size); transform: translate(-50%, -50%); pointer-events: none; background-image: url("image/fifa/spin_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; filter: drop-shadow(0 24px 24px rgba(0, 0, 0, .5)) drop-shadow(0 0 32px rgba(255, 216, 112, .45)); }
 
-            .lwSpinAction:disabled { cursor: not-allowed; filter: brightness(.68) saturate(.9); }
+                .lwWheelWrap::after { bottom: -24px; width: 88%; height: 90px; background: radial-gradient( ellipse, rgba(255, 213, 94, .42), rgba(167, 52, 71, .18) 42%, transparent 72% ); }
 
-        .lwSpinAction--single { background-image: url('image/fifa/img-btn-red.png'); }
+            .lwWheelShell::after { content: ""; position: absolute; right: 0; bottom: 12%; z-index: 9; width: clamp(60px, 13vw, 120px); height: clamp(60px, 13vw, 120px); pointer-events: none; background-image: url('image/fifa/img-ball.png'); background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .38)); animation: lwFloatFront 4.8s ease-in-out infinite; }
 
-        .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
+            .lwWheelDisc { width: 87%; height: 87%; --lw-label-distance: -245px; box-shadow: inset 0 0 0 2px rgba(255, 245, 190, .24), inset 0 0 38px rgba(0, 0, 0, .52), inset 0 0 90px rgba(0, 0, 0, .18); filter: saturate(1.28) contrast(1.08) brightness(1.03); }
 
-        /* history panel */
-        .lwPanel { background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); }
+                .lwWheelDisc::before { z-index: 1; background: repeating-conic-gradient( from 0deg, rgba(255, 241, 168, .95) 0deg 1.05deg, rgba(255, 186, 50, .72) 1.05deg 1.55deg, transparent 1.55deg 45deg ), radial-gradient(circle at 50% 50%, transparent 0 40%, rgba(255, 255, 255, .10) 41%, transparent 43%), radial-gradient(circle at 34% 22%, rgba(255, 255, 255, .25), transparent 27%), radial-gradient(circle at 50% 52%, transparent 0 52%, rgba(0, 0, 0, .25) 74%, rgba(0, 0, 0, .42) 100%); mix-blend-mode: screen; opacity: .76; }
 
-            .lwPanel::before { display: none; }
+                .lwWheelDisc::after { z-index: 2; background: repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .055) 0 1px, transparent 1px 7px), radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .20) 0 22%, transparent 23% 67%, rgba(255, 255, 255, .11) 68%, transparent 71%); opacity: .42; }
 
-        .lwPanel__head { margin: 0 0 8px; }
+            .lwWheel__label { z-index: 3; width: clamp(116px, 9.8vw, 148px); margin-left: calc(clamp(116px, 9.8vw, 148px) / -2); padding: 4px 3px; color: #fffdf0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(18px, 1.55vw, 26px) !important; font-weight: 1000; line-height: .98; letter-spacing: -.045em; text-transform: none; text-shadow: 0 2px 0 rgba(44, 13, 4, .72), 0 4px 8px rgba(0, 0, 0, .56), 0 0 12px rgba(0, 0, 0, .32); -webkit-text-stroke: .45px rgba(60, 15, 2, .36); transform-origin: 50% 0; }
 
-            .lwPanel__head::after { display: none; }
+                .lwWheel__label span { display: block; }
 
-        .lwhead__container { min-height: clamp(92px, 16vw, 150px); margin-top: clamp(-100px, -10vw, -40px); background-image: url('image/fifa/img-trophy.png'); background-repeat: no-repeat; background-position: center top; background-size: contain; display: flex; align-items: flex-end; justify-content: center; }
+                .lwWheel__label[data-prize-index="0"],
+                .lwWheel__label[data-prize-index="1"],
+                .lwWheel__label[data-prize-index="2"],
+                .lwWheel__label[data-prize-index="3"],
+                .lwWheel__label[data-prize-index="4"],
+                .lwWheel__label[data-prize-index="5"],
+                .lwWheel__label[data-prize-index="6"] { font-size: clamp(16px, 2.1vw, 26px) !important; }
 
-        .lwPanel__head h2 { margin: 0; padding: 0 0 clamp(12px, 2.2vw, 22px); color: #fff; font-family: Arial, sans-serif; font-size: clamp(12px, 1.45vw, 16px); line-height: 1; letter-spacing: 0; text-transform: uppercase; }
+                .lwWheel__label[data-prize-index="7"] { width: clamp(120px, 9.6vw, 142px); margin-left: calc(clamp(120px, 9.6vw, 142px) / -2); font-size: clamp(18px, 2vw, 22px) !important; line-height: 1.02; letter-spacing: -.04em; }
 
-        /* TNC */
-        .lwTnc { margin-top: 32px; background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); overflow: visible; }
+            .lwPointer { top: 26%; left: 50%; z-index: 8; width: clamp(42px, 6.5vw, 70px); height: clamp(66px, 10vw, 110px); transform: translateX(-50%) rotate(180deg); filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .42)) drop-shadow(0 0 12px rgba(255, 220, 100, .62)); }
 
-            .lwTnc::before { display: none; }
+            /* =========================================================
+           CENTER SPIN BUTTON
+        ========================================================= */
 
-        .lwTnc__head { position: relative; width: min(430px, calc(100% - 28px)); min-height: clamp(44px, 5.2vw, 56px); margin: -28px auto 0; padding: 0 clamp(34px, 5vw, 56px); display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 38%), linear-gradient(180deg, #d8003b 0%, #c60033 48%, #970027 100%); border: 1px solid rgba(255, 60, 100, .65); clip-path: polygon(6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -3px 0 rgba(80, 0, 20, .28), 0 10px 22px rgba(0, 0, 0, .28); }
+            .lwSpinBtn-Con { position: absolute; left: 50%; top: 50%; z-index: 9; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: translate(-50%, -50%); display: grid; place-items: center; overflow: visible; }
 
-            .lwTnc__head::before { content: ""; position: absolute; inset: 6px 12px; clip-path: inherit; border: 1px solid rgba(255, 255, 255, .08); pointer-events: none; }
+                .lwSpinBtn-Con::before,
+                .lwSpinBtn-Con::after { content: ""; position: absolute; inset: -18px; border-radius: 50%; pointer-events: none; }
 
-            .lwTnc__head::after { content: none; }
+                .lwSpinBtn-Con::before { background: conic-gradient( from 20deg, transparent, rgba(255, 235, 149, .65), transparent 34%, rgba(255, 255, 255, .45), transparent 68%, rgba(255, 217, 94, .5), transparent ); filter: blur(6px); opacity: .72; animation: lwCenterGlowSpin 5.5s linear infinite; }
 
-            .lwTnc__head h2 { position: relative; z-index: 1; margin: 0; color: #fff; font-family: Arial, sans-serif; font-size: clamp(15px, 2.2vw, 22px); line-height: 1; font-weight: 900; letter-spacing: .035em; text-align: center; text-transform: uppercase; white-space: nowrap; text-shadow: 0 2px 0 rgba(60, 0, 18, .55), 0 4px 10px rgba(0, 0, 0, .35); }
+                .lwSpinBtn-Con::after { inset: -7px; border: 2px solid rgba(255, 240, 174, .72); box-shadow: 0 0 16px rgba(255, 224, 118, .56), inset 0 0 14px rgba(255, 255, 255, .22); }
 
-        .lwSpinNote { font-size: 22px; width: auto; }
-        .lwStage { isolation: isolate; }
+            .lwSpinBtn { position: relative; z-index: 1; left: auto; top: auto; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 0; border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 22%, rgba(255, 255, 255, .46), transparent 26%), radial-gradient(circle at 50% 82%, rgba(60, 0, 0, .55), transparent 42%), linear-gradient(180deg, #ff4046 0%, #c4071f 48%, #73000d 100%); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .28), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 12px 28px rgba(0, 0, 0, .5), 0 0 28px rgba(255, 221, 100, .46); text-shadow: 0 2px 0 rgba(70, 0, 0, .75), 0 4px 12px rgba(0, 0, 0, .5); transition: transform .16s ease, filter .16s ease, box-shadow .16s ease; }
 
-            .lwStage::before,
-            .lwStage::after { content: ""; position: absolute; z-index: 0; pointer-events: none; background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .35)); opacity: .95; border-radius: 0; width: clamp(130px, 17vw, 204px); height: clamp(165px, 21.6vw, 259px); background-image: url('image/fifa/img-flag.png'); }
+                .lwSpinBtn:hover:not(:disabled) { transform: translateY(-1px) scale(1.035); filter: brightness(1.08) saturate(1.08); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .32), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 16px 30px rgba(0, 0, 0, .52), 0 0 36px rgba(255, 221, 100, .62); }
 
-            /* 后方漂浮物 1 */
-            .lwStage::before { left: -10%; top: 0%; animation: lwFloatBackOne 5.2s ease-in-out infinite; }
+                .lwSpinBtn:active { transform: scale(.96); }
 
-            /* 后方漂浮物 2 */
-            .lwStage::after { right: -10%; top: 0%; background-image: url('image/fifa/img-flag.png'); animation: lwFloatBackTwo 6s ease-in-out infinite; }
+                .lwSpinBtn:disabled { filter: grayscale(.15) brightness(.72); }
 
-        .lwWheelShell::after { content: ""; position: absolute; right: 0%; bottom: 12%; z-index: 9; width: clamp(60px, 13vw, 120px); height: clamp(60px, 13vw, 120px); background-image: url('image/fifa/img-ball.png'); background-repeat: no-repeat; background-position: center; background-size: contain; pointer-events: none; filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .38)); animation: lwFloatFront 4.8s ease-in-out infinite; }
+            .lwSpinBtn__top { color: #ffe580; font-size: clamp(26px, 3vw, 39px); line-height: .82; font-weight: 1000; letter-spacing: -.065em; }
 
-        @keyframes lwFloatBackOne {
-            0%, 100% { transform: translate3d(0, 0, 0); }
+            .lwSpinBtn__bottom { color: #fff; font-size: clamp(22px, 2.55vw, 34px); line-height: .82; font-weight: 1000; letter-spacing: -.055em; }
 
-            50% { transform: translate3d(0, -14px, 0); }
-        }
+            @keyframes lwCenterGlowSpin {
+                to { transform: rotate(360deg); }
+            }
 
-        @keyframes lwFloatBackTwo {
-            0%, 100% { transform: translate3d(0, 0, 0); }
+            /* =========================================================
+           CHANCE RIBBON + ACTION BUTTONS
+        ========================================================= */
 
-            50% { transform: translate3d(0, -18px, 0); }
-        }
+            .lwChance { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; width: clamp(360px, 45vw, 650px); min-height: var(--fifa-chance-h); margin: var(--fifa-chance-mt) auto var(--fifa-chance-mb); padding: 0 7% var(--fifa-chance-pad-bottom); background-image: url('image/fifa/gold-ribbon.png'); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; border: 0; box-shadow: none; transform: translateY(-4px); filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .28)) drop-shadow(0 0 18px rgba(255, 212, 80, .28)); }
 
-        @keyframes lwFloatFront {
-            0%, 100% { transform: translate3d(0, 0, 0); }
+                .lwChance::before,
+                .lwChance::after { display: none; }
 
-            50% { transform: translate3d(0, -12px, 0); }
-        }
+            .lwChance__main { align-items: baseline; gap: clamp(4px, 1vw, 8px); white-space: nowrap; }
 
-        /* responsive theme fixes */
-        @media (max-width: 1080px) {
-            :root { --fifa-spin-bg-size: 128px; --fifa-spin-btn-size: 64px; --fifa-chance-w: min(540px, 88vw); }
+                .lwChance__main strong { color: #000; font-size: clamp(32px, 5.3vw, 54px); line-height: 1; font-weight: 1000; letter-spacing: -.04em; text-shadow: none; }
 
-            .lwLayout { grid-template-columns: minmax(430px, 1fr) minmax(220px, 340px); }
+                .lwChance__main span { color: #000; font-size: clamp(13px, 2vw, 21px); font-weight: 1000; letter-spacing: -.02em; }
 
-            .lwSpinActions { width: min(480px, 92%); }
+            .lwSpinActions { width: min(560px, 92%); gap: clamp(8px, 1.6vw, 14px); }
 
-            .lwSpinNote { font-size: clamp(11px, 1.4vw, 16px); }
+            .lwSpinAction { min-height: var(--fifa-action-height); padding: 0 18px; border: 0; border-radius: 0; color: #fff; font-size: var(--fifa-action-font); line-height: 1; letter-spacing: .02em; white-space: nowrap; background-size: 100% 100%; background-repeat: no-repeat; background-position: center; }
 
-            .lwPanel { height: 460px; }
-        }
+                .lwSpinAction:disabled { cursor: not-allowed; filter: brightness(.68) saturate(.9); }
 
-        @media (max-width: 767px) {
-            :root { --fifa-spin-bg-size: 110px; --fifa-spin-btn-size: 56px; --fifa-chance-w: min(390px, 96vw); --fifa-chance-h: clamp(58px, 16vw, 78px); --fifa-chance-mt: -10px; --fifa-chance-mb: -4px; --fifa-chance-pad-bottom: clamp(12px, 4vw, 20px); --fifa-action-font: clamp(13px, 4.2vw, 18px); --fifa-action-height: clamp(44px, 12vw, 54px); }
+            .lwSpinAction--single { background-image: url('image/fifa/img-btn-red.png'); }
 
-            .lwTitle img { max-width: min(330px, 92vw); height: auto; }
+            .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
 
-            .lwPointer { top: 29%; width: 42px; height: 66px; }
+            .lwSpinNote { width: auto; font-size: 22px; }
 
-            .lwChance { padding-inline: 8%; background-size: 100% 100%; }
+            /* =========================================================
+           HISTORY PANEL
+        ========================================================= */
 
-            .lwChance__main strong { font-size: clamp(22px, 7vw, 30px); }
+            .lwPanel { background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); }
 
-            .lwChance__main span { font-size: clamp(9px, 3vw, 12px); }
+                .lwPanel::before { display: none; }
 
-            .lwSpinActions { width: min(360px, 94vw); gap: 8px; }
+            .lwPanel__head { margin: 0 0 8px; }
 
-            .lwSpinAction { padding-inline: 10px; letter-spacing: 0; }
+                .lwPanel__head::after { display: none; }
 
-            .lwhead__container { min-height: 96px; margin-top: -38px; background-size: auto 96px; }
+            .lwhead__container { min-height: clamp(92px, 16vw, 150px); margin-top: clamp(-100px, -10vw, -40px); background-image: url('image/fifa/img-trophy.png'); background-repeat: no-repeat; background-position: center top; background-size: contain; display: flex; align-items: flex-end; justify-content: center; }
 
-            .lwPanel__head h2 { padding-bottom: 12px; font-size: 12px; }
+            .lwPanel__head h2 { margin: 0; padding: 0 0 clamp(12px, 2.2vw, 22px); color: #fff; font-family: Arial, sans-serif; font-size: clamp(12px, 1.45vw, 16px); line-height: 1; letter-spacing: 0; text-transform: uppercase; }
 
-            .lwTnc { margin-top: 40px; }
+            /* =========================================================
+           TNC
+        ========================================================= */
 
-            .lwTnc__head { width: min(360px, calc(100% - 14px)); min-height: 44px; margin-top: -22px; padding-inline: 32px; }
+            .lwTnc { margin-top: 32px; background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); overflow: visible; }
 
-                .lwTnc__head h2 { font-size: clamp(14px, 4.4vw, 17px); letter-spacing: .02em; }
+                .lwTnc::before { display: none; }
 
-            .lwTnc__list { padding-top: 18px; }
+            .lwTnc__head { position: relative; width: min(430px, calc(100% - 28px)); min-height: clamp(44px, 5.2vw, 56px); margin: -28px auto 0; padding: 0 clamp(34px, 5vw, 56px); display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 38%), linear-gradient(180deg, #d8003b 0%, #c60033 48%, #970027 100%); border: 1px solid rgba(255, 60, 100, .65); clip-path: polygon(6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -3px 0 rgba(80, 0, 20, .28), 0 10px 22px rgba(0, 0, 0, .28); }
 
-            .lwStage::before { width: 112px; height: 142px; }
+                .lwTnc__head::before { content: ""; position: absolute; inset: 6px 12px; clip-path: inherit; border: 1px solid rgba(255, 255, 255, .08); pointer-events: none; }
 
-            .lwStage::after { width: 112px; height: 142px; }
-        }
+                .lwTnc__head::after { content: none; }
 
-        @media (max-width: 380px) {
-            :root { --fifa-spin-bg-size: 98px; --fifa-spin-btn-size: 50px; --fifa-chance-w: 98vw; --fifa-chance-h: 56px; --fifa-action-font: 12px; --fifa-action-height: 42px; }
+                .lwTnc__head h2 { position: relative; z-index: 1; margin: 0; color: #fff; font-family: Arial, sans-serif; font-size: clamp(15px, 2.2vw, 22px); line-height: 1; font-weight: 900; letter-spacing: .035em; text-align: center; text-transform: uppercase; white-space: nowrap; text-shadow: 0 2px 0 rgba(60, 0, 18, .55), 0 4px 10px rgba(0, 0, 0, .35); }
 
-            .lwChance__main { gap: 4px; }
+            /* =========================================================
+           FIFA POPUP THEME
+           Requires .lwPopup__inner wrapper inside .lwPopup__card
+        ========================================================= */
 
-                .lwChance__main strong { font-size: 20px; }
+            .lwPopup.is-open .lwPopup__card { position: relative; width: min(560px, 92vw, calc(88vh * 560 / 879)); aspect-ratio: 560 / 879; padding: 0; border: 0; border-radius: 0; max-height: none; overflow: visible; box-shadow: none; background-image: url('image/fifa/popup_box.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; display: block; }
 
-                .lwChance__main span { font-size: 9px; }
+            .lwPopup__card::before,
+            .lwPopup__card::after { display: none; }
 
-            .lwTnc__head h2 { font-size: 13px; }
-        }
+            .lwPopup__inner { position: absolute; top: calc(250 / 879 * 100%); right: calc(50 / 560 * 100%); bottom: calc(150 / 879 * 100%); left: calc(50 / 560 * 100%); display: flex; flex-direction: column; min-height: 0; }
+
+            .lwPopup__head { position: relative; z-index: 3; height: auto; margin: 0 0 24px; display: flex; align-items: center; justify-content: center; }
+
+            .lwPopup__title { position: relative; left: auto; top: auto; transform: none; min-width: 180px; margin: 0; padding: 10px 24px; color: #fff; font-family: Arial, sans-serif; font-size: clamp(13px, 1.6vw, 16px); font-weight: 900; line-height: 1; letter-spacing: .06em; text-align: center; text-transform: uppercase; white-space: nowrap; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 30%), linear-gradient(180deg, #d8003b 0%, #b90031 50%, #8c0025 100%); border: 1px solid rgba(255, 70, 110, .72); box-shadow: 0 10px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .18); clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); text-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+
+                .lwPopup__title::before,
+                .lwPopup__title::after { display: none; }
+
+            .lwPopup__close { position: absolute; right: calc(32 / 560 * 100%); top: calc(36 / 879 * 100%); z-index: 6; width: clamp(30px, 7vw, 40px); height: clamp(30px, 7vw, 40px); border: 1px solid rgba(255, 255, 255, .16); border-radius: 50%; color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 26%), linear-gradient(180deg, #d8003b 0%, #aa002d 100%); box-shadow: 0 8px 16px rgba(0, 0, 0, .28); font-size: clamp(24px, 6vw, 30px); display: flex; align-items: center; justify-content: center; }
+
+            .lwPopup__body { position: relative; z-index: 2; min-height: 0; padding: 0; display: flex; align-items: center; justify-content: center; }
+
+            .lwResult { width: 100%; text-align: center; }
+
+            .lwResult--win .lwResult__title:first-child { margin-top: 0; }
+
+            .lwResult__icon { width: 112px; height: 112px; margin: 10px auto 18px; border-radius: 50%; border: 3px solid rgba(72, 160, 255, .68); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #07245f 0%, #04163f 100%); color: #ffd54f; box-shadow: 0 0 0 8px rgba(255, 255, 255, .05), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .12); font-size: 46px; }
+
+            .lwResult__icon--image { overflow: hidden; padding: 0; }
+
+                .lwResult__icon--image img { width: 72%; height: 72%; object-fit: contain; display: block; }
+
+            .lwResult__title { margin: 0; color: #fff; font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 4vw, 48px); line-height: 1; text-shadow: 0 3px 10px rgba(0, 0, 0, .45); }
+
+            .lwResult__reward { margin-top: 14px; padding-top: 14px; color: #ffd95a; font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 900; text-shadow: 0 2px 8px rgba(0, 0, 0, .42); }
+
+                .lwResult__reward::before { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent); }
+
+            .lwResult__desc { max-width: 360px; margin: 10px auto 0; color: rgba(255, 255, 255, .82); font-size: 14px; line-height: 1.5; }
+
+            .lwResult__action { min-width: 220px; min-height: 54px; margin-top: 26px; border: 1px solid rgba(255, 90, 130, .68); border-radius: 999px; color: #fff; font-size: 17px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; background: linear-gradient(180deg, rgba(255, 255, 255, .18), transparent 30%), linear-gradient(180deg, #ef234f 0%, #cb0d3a 52%, #8f0128 100%); box-shadow: 0 12px 24px rgba(0, 0, 0, .32), 0 0 16px rgba(255, 0, 80, .18), inset 0 1px 0 rgba(255, 255, 255, .18); }
+
+                .lwResult__action:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+            /* Lose popup */
+            .lwPopup.is-lose .lwPopup__title { color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 32%), linear-gradient(180deg, #294a8f 0%, #17346f 52%, #0d2251 100%); border-color: rgba(90, 150, 255, .45); box-shadow: 0 8px 18px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .12); }
+
+            .lwResult--lose .lwResult__icon { border-color: rgba(104, 170, 255, .55); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #183b7a 0%, #0b2454 100%); color: #fff; box-shadow: 0 0 0 8px rgba(255, 255, 255, .04), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .10); }
+
+            .lwResult--lose .lwResult__title { color: #f4f8ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .45), 0 0 10px rgba(90, 150, 255, .12); }
+
+            .lwResult--lose .lwResult__reward { color: #dbe9ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
+
+                .lwResult--lose .lwResult__reward::before { background: linear-gradient(90deg, transparent, rgba(120, 170, 255, .24), transparent); }
+
+            .lwResult--lose .lwResult__desc { color: rgba(255, 255, 255, .82); }
+
+            .lwResult--lose .lwResult__action { color: #fff; border-color: rgba(90, 150, 255, .42); background: linear-gradient(180deg, rgba(255, 255, 255, .14), transparent 30%), linear-gradient(180deg, #355ea8 0%, #1d3d7c 52%, #10295c 100%); box-shadow: 0 10px 20px rgba(0, 0, 0, .28), 0 0 14px rgba(64, 138, 255, .16), inset 0 1px 0 rgba(255, 255, 255, .14); }
+
+            /* Spin all popup */
+            .lwResult--spinAll .lwResult__title { font-size: clamp(30px, 3.5vw, 42px); }
+
+            .lwSpinAllList { max-height: min(320px, 42vh); margin-top: 18px; gap: 8px; }
+
+            .lwSpinAllItem { grid-template-columns: 48px 1fr; border-color: rgba(64, 138, 255, .26); background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025)), rgba(4, 16, 48, .52); }
+
+                .lwSpinAllItem.is-lose { border-color: rgba(120, 170, 255, .14); background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)), rgba(18, 42, 88, .42); opacity: .88; }
+
+            /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+            @media (max-width: 1080px) {
+                :root { --fifa-spin-bg-size: clamp(150px, 16.5vw, 180px); --fifa-spin-btn-size: clamp(78px, 8.7vw, 96px); }
+
+                .lwLayout { grid-template-columns: minmax(430px, 1fr) minmax(220px, 340px); }
+
+                .lwWheelDisc { --lw-label-distance: -21vw; }
+
+                .lwWheel__label { font-size: clamp(14px, 1.7vw, 20px) !important; }
+
+                    .lwWheel__label[data-prize-index="7"] { font-size: clamp(16px, 1.7vw, 22px) !important; }
+
+                .lwSpinActions { width: min(480px, 92%); }
+
+                .lwSpinNote { font-size: clamp(11px, 1.4vw, 16px); }
+
+                .lwPanel { height: 460px; }
+            }
+
+            @media (max-width: 767px) {
+                :root { --fifa-spin-bg-size: clamp(104px, 30vw, 130px); --fifa-spin-btn-size: clamp(54px, 16vw, 68px); --fifa-chance-h: clamp(58px, 16vw, 78px); --fifa-chance-mt: -10px; --fifa-chance-mb: -4px; --fifa-chance-pad-bottom: clamp(12px, 4vw, 20px); --fifa-action-font: clamp(13px, 4.2vw, 18px); --fifa-action-height: clamp(44px, 12vw, 54px); }
+
+                .lwTitle img { max-width: min(330px, 92vw); height: auto; }
+
+                .lwWheelWrap { width: min(94vw, 410px); }
+
+                .lwWheelDisc { --lw-label-distance: -150px; }
+
+                .lwWheel__label { width: 94px; margin-left: -47px; font-size: clamp(10px, 3.05vw, 13px) !important; line-height: .98; -webkit-text-stroke: .25px rgba(60, 15, 2, .34); }
+
+                    .lwWheel__label[data-prize-index="7"] { width: 86px; margin-left: -43px; font-size: clamp(10px, 2.55vw, 12px) !important; line-height: 1.04; }
+
+                .lwPointer { top: 29%; width: 42px; height: 66px; }
+
+                .lwSpinBtn-Con::before { inset: -8px; }
+
+                .lwSpinBtn-Con::after { inset: -4px; border-width: 1px; }
+
+                .lwSpinBtn__top { font-size: clamp(14px, 5vw, 19px); }
+
+                .lwSpinBtn__bottom { font-size: clamp(13px, 4.5vw, 17px); }
+
+                .lwChance { width: min(340px, 92vw); padding-inline: 8%; transform: none; background-size: 100% 100%; }
+
+                .lwChance__main strong { font-size: clamp(25px, 8vw, 34px); }
+
+                .lwChance__main span { font-size: clamp(10px, 3.4vw, 14px); }
+
+                .lwSpinActions { width: min(360px, 94vw); gap: 8px; }
+
+                .lwSpinAction { padding-inline: 10px; letter-spacing: 0; }
+
+                .lwhead__container { min-height: 96px; margin-top: -38px; background-size: auto 96px; }
+
+                .lwPanel__head h2 { padding-bottom: 12px; font-size: 12px; }
+
+                .lwTnc { margin-top: 40px; }
+
+                .lwTnc__head { width: min(360px, calc(100% - 14px)); min-height: 44px; margin-top: -22px; padding-inline: 32px; }
+
+                    .lwTnc__head h2 { font-size: clamp(14px, 4.4vw, 17px); letter-spacing: .02em; }
+
+                .lwTnc__list { padding-top: 18px; }
+
+                .lwStage::before,
+                .lwStage::after { width: 112px; height: 142px; }
+
+                .lwPopup.is-open .lwPopup__card { width: min(390px, 94vw, calc(88dvh * 560 / 879)); }
+
+                .lwPopup__inner { top: calc(235 / 879 * 100%); right: calc(46 / 560 * 100%); bottom: calc(135 / 879 * 100%); left: calc(46 / 560 * 100%); }
+
+                .lwPopup__head { margin-bottom: 8px; }
+
+                .lwPopup__title { min-width: 148px; padding: 9px 20px; font-size: 13px; }
+
+                .lwPopup__close { width: 34px; height: 34px; font-size: 26px; }
+
+                .lwResult__icon { width: 88px; height: 88px; margin: 6px auto 14px; font-size: 38px; border-width: 2px; }
+
+                .lwResult__title { font-size: clamp(28px, 9vw, 38px); }
+
+                .lwResult__reward { margin-top: 12px; padding-top: 12px; font-size: 22px; line-height: 1.15; }
+
+                .lwResult__desc { margin-top: 8px; font-size: 12px; line-height: 1.45; }
+
+                .lwResult__action { min-width: 180px; min-height: 46px; margin-top: 20px; font-size: 14px; }
+
+                .lwSpinAllList { max-height: min(300px, 42dvh); margin-top: 14px; gap: 7px; }
+
+                .lwSpinAllItem { grid-template-columns: 42px 1fr; min-height: 40px; padding: 7px 10px; gap: 7px; }
+
+                .lwSpinAllItem__index { font-size: 11px; }
+
+                .lwSpinAllItem__name { font-size: 12px; line-height: 1.25; }
+            }
+
+            @media (max-width: 380px) {
+                :root { --fifa-spin-bg-size: 98px; --fifa-spin-btn-size: 50px; --fifa-chance-h: 56px; --fifa-action-font: 12px; --fifa-action-height: 42px; }
+
+                .lwChance__main { gap: 4px; }
+
+                    .lwChance__main strong { font-size: 20px; }
+
+                    .lwChance__main span { font-size: 9px; }
+
+                .lwTnc__head h2 { font-size: 13px; }
+
+                .lwWheelDisc { --lw-label-distance: -37vw; }
+
+                .lwWheel__label { width: 80px; margin-left: -40px; font-size: 10px !important; }
+
+                    .lwWheel__label[data-prize-index="7"] { width: 74px; margin-left: -37px; font-size: 12px !important; }
+
+                .lwPopup.is-open .lwPopup__card { width: min(350px, 94vw, calc(88dvh * 560 / 879)); }
+
+                .lwPopup__inner { top: calc(225 / 879 * 100%); right: calc(42 / 560 * 100%); bottom: calc(125 / 879 * 100%); left: calc(42 / 560 * 100%); }
+
+                .lwResult__title { font-size: 30px; }
+
+                .lwResult__reward { font-size: 20px; }
+
+                .lwResult__action { min-width: 168px; min-height: 44px; font-size: 13px; }
+            }
     </style>
-
-    <style>
-        /* FIFA lucky wheel visual upgrade: stronger focal button, cleaner labels, richer wheel finish */
-        :root { --fifa-spin-bg-size: clamp(218px, 18.4vw, 254px); --fifa-spin-btn-size: clamp(118px, 10.2vw, 138px); --lw-label-distance: -212px; }
-
-        .lwStage { padding-top: 0; }
-
-        .lwWheelWrap { width: min(650px, 100%); filter: drop-shadow(0 34px 34px rgba(0, 0, 0, .48)) drop-shadow(0 0 26px rgba(255, 207, 89, .24)); }
-
-            .lwWheelWrap::before { filter: drop-shadow(0 24px 24px rgba(0, 0, 0, .5)) drop-shadow(0 0 32px rgba(255, 216, 112, .45)); }
-
-            .lwWheelWrap::after { bottom: -24px; width: 88%; height: 90px; background: radial-gradient(ellipse, rgba(255, 213, 94, .42), rgba(167, 52, 71, .18) 42%, transparent 72%); }
-
-        .lwWheelDisc { width: 87%; height: 87%; --lw-label-distance: -245px; box-shadow: inset 0 0 0 2px rgba(255, 245, 190, .24), inset 0 0 38px rgba(0, 0, 0, .52), inset 0 0 90px rgba(0, 0, 0, .18); filter: saturate(1.28) contrast(1.08) brightness(1.03); }
-
-            .lwWheelDisc::before { z-index: 1; background: repeating-conic-gradient(from 0deg, rgba(255, 241, 168, .95) 0deg 1.05deg, rgba(255, 186, 50, .72) 1.05deg 1.55deg, transparent 1.55deg 45deg), radial-gradient(circle at 50% 50%, transparent 0 40%, rgba(255, 255, 255, .10) 41%, transparent 43%), radial-gradient(circle at 34% 22%, rgba(255, 255, 255, .25), transparent 27%), radial-gradient(circle at 50% 52%, transparent 0 52%, rgba(0, 0, 0, .25) 74%, rgba(0, 0, 0, .42) 100%); mix-blend-mode: screen; opacity: .76; }
-
-            .lwWheelDisc::after { z-index: 2; background: repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .055) 0 1px, transparent 1px 7px), radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .20) 0 22%, transparent 23% 67%, rgba(255, 255, 255, .11) 68%, transparent 71%); opacity: .42; }
-
-        .lwWheel__label { z-index: 3; width: clamp(116px, 9.8vw, 148px); margin-left: calc(clamp(116px, 9.8vw, 148px) / -2); padding: 4px 3px; color: #fffdf0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(18px, 1.55vw, 26px) !important; font-weight: 1000; line-height: .98; letter-spacing: -.045em; text-transform: none; text-shadow: 0 2px 0 rgba(44, 13, 4, .72), 0 4px 8px rgba(0, 0, 0, .56), 0 0 12px rgba(0, 0, 0, .32); -webkit-text-stroke: .45px rgba(60, 15, 2, .36); transform-origin: 50% 0; }
-
-            .lwWheel__label span { display: block; }
-
-            .lwWheel__label[data-prize-index="7"] { width: clamp(120px, 9.6vw, 142px); margin-left: calc(clamp(120px, 9.6vw, 142px) / -2); font-size: clamp(18px, 2vw, 22px) !important; line-height: 1.02; letter-spacing: -.04em; }
-
-            .lwWheel__label[data-prize-index="0"] { font-size: clamp(16px, 2.1vw, 26px) !important; }
-
-            .lwWheel__label[data-prize-index="1"],
-            .lwWheel__label[data-prize-index="2"],
-            .lwWheel__label[data-prize-index="3"],
-            .lwWheel__label[data-prize-index="4"],
-            .lwWheel__label[data-prize-index="5"],
-            .lwWheel__label[data-prize-index="6"] { font-size: clamp(16px, 2.1vw, 26px) !important; }
-
-        .lwSpinBtn-Con { overflow: visible; }
-
-            .lwSpinBtn-Con::before,
-            .lwSpinBtn-Con::after { content: ""; position: absolute; inset: -18px; border-radius: 50%; pointer-events: none; }
-
-            .lwSpinBtn-Con::before { background: conic-gradient(from 20deg, transparent, rgba(255, 235, 149, .65), transparent 34%, rgba(255, 255, 255, .45), transparent 68%, rgba(255, 217, 94, .5), transparent); filter: blur(6px); opacity: .72; animation: lwCenterGlowSpin 5.5s linear infinite; }
-
-            .lwSpinBtn-Con::after { inset: -7px; border: 2px solid rgba(255, 240, 174, .72); box-shadow: 0 0 16px rgba(255, 224, 118, .56), inset 0 0 14px rgba(255, 255, 255, .22); }
-
-        .lwSpinBtn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: radial-gradient(circle at 35% 22%, rgba(255, 255, 255, .46), transparent 26%), radial-gradient(circle at 50% 82%, rgba(60, 0, 0, .55), transparent 42%), linear-gradient(180deg, #ff4046 0%, #c4071f 48%, #73000d 100%); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .28), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 12px 28px rgba(0, 0, 0, .5), 0 0 28px rgba(255, 221, 100, .46); text-shadow: 0 2px 0 rgba(70, 0, 0, .75), 0 4px 12px rgba(0, 0, 0, .5); transition: transform .16s ease, filter .16s ease, box-shadow .16s ease; }
-
-            .lwSpinBtn:hover:not(:disabled) { transform: translateY(-1px) scale(1.035); filter: brightness(1.08) saturate(1.08); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .32), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 16px 30px rgba(0, 0, 0, .52), 0 0 36px rgba(255, 221, 100, .62); }
-
-            .lwSpinBtn:disabled { filter: grayscale(.15) brightness(.72); }
-
-        .lwSpinBtn__top { color: #ffe580; font-size: clamp(26px, 3vw, 39px); line-height: .82; font-weight: 1000; letter-spacing: -.065em; }
-
-        .lwSpinBtn__bottom { color: #fff; font-size: clamp(22px, 2.55vw, 34px); line-height: .82; font-weight: 1000; letter-spacing: -.055em; }
-
-        .lwPointer { filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .42)) drop-shadow(0 0 12px rgba(255, 220, 100, .62)); }
-
-        .lwChance { width: clamp(360px, 45vw, 650px); transform: translateY(-4px); filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .28)) drop-shadow(0 0 18px rgba(255, 212, 80, .28)); }
-
-        .lwChance__main strong { font-size: clamp(32px, 5.3vw, 54px); font-weight: 1000; letter-spacing: -.04em; }
-
-        .lwChance__main span { font-size: clamp(13px, 2vw, 21px); font-weight: 1000; letter-spacing: -.02em; }
-
-        @keyframes lwCenterGlowSpin {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 1080px) {
-            :root { --fifa-spin-bg-size: clamp(150px, 16.5vw, 180px); --fifa-spin-btn-size: clamp(78px, 8.7vw, 96px); }
-
-            .lwWheelDisc { --lw-label-distance: -21vw; }
-            .lwWheel__label { font-size: clamp(14px, 1.7vw, 20px) !important; }
-                .lwWheel__label[data-prize-index="7"] { font-size: clamp(16px, 1.7vw, 22px) !important; }
-        }
-
-        @media (max-width: 767px) {
-            :root { --fifa-spin-bg-size: clamp(104px, 30vw, 130px); --fifa-spin-btn-size: clamp(54px, 16vw, 68px); }
-
-            .lwWheelWrap { width: min(94vw, 410px); }
-            .lwWheelDisc { --lw-label-distance: -150px; }
-            .lwWheel__label { width: 94px; margin-left: -47px; font-size: clamp(10px, 3.05vw, 13px) !important; line-height: .98; -webkit-text-stroke: .25px rgba(60, 15, 2, .34); }
-                .lwWheel__label[data-prize-index="7"] { width: 86px; margin-left: -43px; font-size: clamp(12px, 2.55vw, 10px) !important; line-height: 1.04; }
-            .lwSpinBtn__top { font-size: clamp(14px, 5vw, 19px); }
-            .lwSpinBtn__bottom { font-size: clamp(13px, 4.5vw, 17px); }
-            .lwSpinBtn-Con::before { inset: -8px; }
-            .lwSpinBtn-Con::after { inset: -4px; border-width: 1px; }
-            .lwChance { width: min(340px, 92vw); transform: none; }
-            .lwChance__main strong { font-size: clamp(25px, 8vw, 34px); }
-            .lwChance__main span { font-size: clamp(10px, 3.4vw, 14px); }
-        }
-
-        @media (max-width: 380px) {
-            .lwWheelDisc { --lw-label-distance: -37vw; }
-            .lwWheel__label { width: 80px; margin-left: -40px; font-size: 10px !important; }
-                .lwWheel__label[data-prize-index="7"] { width: 74px; margin-left: -37px; font-size: 12px !important; }
-        }
-
-        /* ================================
-   FIFA POPUP THEME
-================================ */
-
-
-        .lwPopup.is-open .lwPopup__card { position: relative; width: min(560px, 92vw, calc(88vh * 560 / 879)); aspect-ratio: 560 / 879; background-image: url('image/fifa/popup_box.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; border: 0; border-radius: 0; box-shadow: none; max-height: none; overflow: visible; padding: 0; display: block; }
-
-        /* 原本的金框全部关掉 */
-        .lwPopup__card::before,
-        .lwPopup__card::after { display: none; }
-
-        .lwPopup__inner { position: absolute; top: calc(250 / 879 * 100%); right: calc(50 / 560 * 100%); bottom: calc(150 / 879 * 100%); left: calc(50 / 560 * 100%); display: flex; flex-direction: column; min-height: 0; }
-
-        /* head 正常留在 card padding 里面，不 absolute，不隐藏 */
-        .lwPopup__head { position: relative; z-index: 3; height: auto; margin: 0 0 12px; display: flex; align-items: center; justify-content: center; }
-
-
-
-        /* title 也不要 absolute，让它自然待在 head 里面 */
-        .lwPopup__title { position: relative; left: auto; top: auto; transform: none; min-width: 180px; margin: 0; padding: 10px 24px; color: #fff; font-family: Arial, sans-serif; font-size: clamp(13px, 1.6vw, 16px); font-weight: 900; line-height: 1; letter-spacing: .06em; text-align: center; text-transform: uppercase; white-space: nowrap; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 30%), linear-gradient(180deg, #d8003b 0%, #b90031 50%, #8c0025 100%); border: 1px solid rgba(255, 70, 110, .72); box-shadow: 0 10px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .18); clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); text-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
-
-            .lwPopup__title::before,
-            .lwPopup__title::after { display: none; }
-
-        /* close 可以 absolute，因为它是独立按钮 */
-        .lwPopup__close {border: 1px solid rgba(255, 255, 255, .16); color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 26%), linear-gradient(180deg, #d8003b 0%, #aa002d 100%); box-shadow: 0 8px 16px rgba(0, 0, 0, .28); font-size: clamp(24px, 6vw, 30px); display: flex; align-items: center; justify-content: center; }
-
-        /* body 也正常待在 card padding 里面 */
-        .lwPopup__body { position: relative; z-index: 2; min-height: 0; padding: 0; display: flex; align-items: center; justify-content: center; }
-
-        /* 里面的结果内容 */
-        .lwResult { width: 100%; text-align: center; }
-
-        /* win 没有 icon 的时候，让内容不要太靠下 */
-        .lwResult--win .lwResult__title:first-child { margin-top: 0; font-size: clamp(28px,4vw);}
-
-        /* mobile 微调：不要改比例，只微调里面间距 */
-        @media (max-width: 767px) {
-            .lwPopup.is-open .lwPopup__card { width: min(390px, 94vw, calc(88dvh * 560 / 879)); aspect-ratio: 560 / 879; padding: calc(235 / 560 * 100%) calc(46 / 560 * 100%) calc(135 / 560 * 100%); }
-
-            .lwPopup__head { margin-bottom: 8px; }
-
-            .lwPopup__title { min-width: 148px; padding: 9px 20px; font-size: 13px; }
-        }
-
-        @media (max-width: 380px) {
-            .lwPopup.is-open .lwPopup__card { width: min(350px, 94vw, calc(88dvh * 560 / 879)); padding: calc(225 / 560 * 100%) calc(42 / 560 * 100%) calc(125 / 560 * 100%); }
-        }
-    </style>
-
 </head>
 
 <body>
