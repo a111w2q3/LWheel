@@ -143,7 +143,7 @@
             .lwPopupConfettiPiece.is-strip { width: 5px; height: 14px }
         .lwResult--spinAll .lwResult__title { font-size: clamp(30px,3.4vw,44px) }
         .lwSpinAllList { display: grid; gap: 8px; max-height: min(320px,42vh); overflow-y: auto; margin: 20px auto 0; padding: 4px 6px 4px 0 }
-        .lwSpinAllItem { display: grid; grid-template-columns: 48px 34px 1fr; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--lw-border-soft); border-radius: 14px; background: linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.026)),rgba(255,255,255,.052); text-align: left }
+        .lwSpinAllItem { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--lw-border-soft); border-radius: 14px; background: linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.026)),rgba(255,255,255,.052); text-align: left }
             .lwSpinAllItem.is-lose { border-color: var(--lw-white-12); background: linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.022)),rgba(120,120,130,.12); opacity: .78 }
         .lwSpinAllItem__index { color: rgba(255,232,168,.72); font-size: 12px; font-weight: 900 }
         .lwSpinAllItem__icon { font-size: 20px; text-align: center }
@@ -155,6 +155,12 @@
             .lwHistoryList::-webkit-scrollbar-track, .lwSpinAllList::-webkit-scrollbar-track, .lwTnc__list::-webkit-scrollbar-track { background: var(--lw-white-05); border-radius: 999px }
             .lwHistoryList::-webkit-scrollbar-thumb, .lwSpinAllList::-webkit-scrollbar-thumb, .lwTnc__list::-webkit-scrollbar-thumb { background: var(--lw-border-mid); border-radius: 999px }
                 .lwHistoryList::-webkit-scrollbar-thumb:hover, .lwSpinAllList::-webkit-scrollbar-thumb:hover, .lwTnc__list::-webkit-scrollbar-thumb:hover { background: rgba(245,206,108,.58) }
+
+        .lwResult__icon--image { overflow: hidden; padding: 0; }
+
+            .lwResult__icon--image img { width: 72%; height: 72%; object-fit: contain; display: block; }
+
+        .lwResult--win .lwResult__title:first-child { margin-top: 8px; }
 
         @keyframes lwShellJackpot {
             0% { filter: none }
@@ -549,130 +555,51 @@
 
         /* ================================
    FIFA POPUP THEME
-   paste at bottom of FIFA style
 ================================ */
 
-        /* popup card background */
-        .lwPopup.is-open .lwPopup__card { background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, .08), transparent 24%), linear-gradient(180deg, rgba(4, 16, 48, .15) 0%, rgba(4, 16, 48, .68) 48%, rgba(2, 8, 22, .94) 100%), url('image/fifa/popup_bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
 
-        /* popup card frame */
-        .lwPopup__card { width: min(580px, 92vw); max-height: min(720px, 88vh); border: 2px solid rgba(64, 138, 255, .75); border-radius: 28px; box-shadow: 0 24px 60px rgba(0, 0, 0, .45), 0 0 0 2px rgba(198, 0, 51, .45) inset, 0 0 24px rgba(64, 138, 255, .18); }
+        .lwPopup.is-open .lwPopup__card { position: relative; width: min(560px, 92vw, calc(88vh * 560 / 879)); aspect-ratio: 560 / 879; background-image: url('image/fifa/popup_box.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; border: 0; border-radius: 0; box-shadow: none; max-height: none; overflow: visible; padding: 0; display: block; }
 
-            .lwPopup__card::before,
-            .lwPopup__card::after { border-color: rgba(64, 138, 255, .35) !important; box-shadow: none !important; }
+        /* 原本的金框全部关掉 */
+        .lwPopup__card::before,
+        .lwPopup__card::after { display: none; }
 
-        /* popup title tab */
-        .lwPopup__head { height: 58px; }
+        .lwPopup__inner { position: absolute; top: calc(250 / 879 * 100%); right: calc(50 / 560 * 100%); bottom: calc(150 / 879 * 100%); left: calc(50 / 560 * 100%); display: flex; flex-direction: column; min-height: 0; }
 
-        .lwPopup__title { top: -22px; min-width: 190px; padding: 11px 28px; color: #fff; font-family: Arial, sans-serif; font-size: 16px; font-weight: 900; line-height: 1; letter-spacing: .06em; text-transform: uppercase; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 30%), linear-gradient(180deg, #d8003b 0%, #b90031 50%, #8c0025 100%); border: 1px solid rgba(255, 70, 110, .72); box-shadow: 0 10px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .18); clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); text-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+        /* head 正常留在 card padding 里面，不 absolute，不隐藏 */
+        .lwPopup__head { position: relative; z-index: 3; height: auto; margin: 0 0 12px; display: flex; align-items: center; justify-content: center; }
 
-            .lwPopup__title::before { display: none; }
 
-        /* close button */
-        .lwPopup__close { right: 10px; top: 10px; width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, .16); border-radius: 50%; color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 26%), linear-gradient(180deg, #d8003b 0%, #aa002d 100%); box-shadow: 0 8px 16px rgba(0, 0, 0, .28); font-size: 30px; }
 
-            .lwPopup__close:hover { transform: scale(1.05); filter: brightness(1.08); }
+        /* title 也不要 absolute，让它自然待在 head 里面 */
+        .lwPopup__title { position: relative; left: auto; top: auto; transform: none; min-width: 180px; margin: 0; padding: 10px 24px; color: #fff; font-family: Arial, sans-serif; font-size: clamp(13px, 1.6vw, 16px); font-weight: 900; line-height: 1; letter-spacing: .06em; text-align: center; text-transform: uppercase; white-space: nowrap; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 30%), linear-gradient(180deg, #d8003b 0%, #b90031 50%, #8c0025 100%); border: 1px solid rgba(255, 70, 110, .72); box-shadow: 0 10px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .18); clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); text-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
 
-        /* popup body */
-        .lwPopup__body { padding: 4px 38px 36px; }
+            .lwPopup__title::before,
+            .lwPopup__title::after { display: none; }
 
-        /* result icon */
-        .lwResult__icon { width: 112px; height: 112px; margin: 10px auto 18px; border-radius: 50%; border: 3px solid rgba(72, 160, 255, .68); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #07245f 0%, #04163f 100%); color: #ffd54f; box-shadow: 0 0 0 8px rgba(255, 255, 255, .05), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .12); font-size: 46px; }
+        /* close 可以 absolute，因为它是独立按钮 */
+        .lwPopup__close {border: 1px solid rgba(255, 255, 255, .16); color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 26%), linear-gradient(180deg, #d8003b 0%, #aa002d 100%); box-shadow: 0 8px 16px rgba(0, 0, 0, .28); font-size: clamp(24px, 6vw, 30px); display: flex; align-items: center; justify-content: center; }
 
-        /* result text */
-        .lwResult__title { margin: 0; color: #fff; font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 4vw, 48px); line-height: 1; text-shadow: 0 3px 10px rgba(0, 0, 0, .45); }
+        /* body 也正常待在 card padding 里面 */
+        .lwPopup__body { position: relative; z-index: 2; flex: 1; min-height: 0; padding: 0; display: flex; align-items: center; justify-content: center; }
 
-        .lwResult__reward { margin-top: 14px; padding-top: 14px; color: #ffd95a; font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 900; text-shadow: 0 2px 8px rgba(0, 0, 0, .42); }
+        /* 里面的结果内容 */
+        .lwResult { width: 100%; text-align: center; }
 
-            .lwResult__reward::before { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent); }
+        /* win 没有 icon 的时候，让内容不要太靠下 */
+        .lwResult--win .lwResult__title:first-child { margin-top: 0; font-size: clamp(28px,4vw);}
 
-        .lwResult__desc { max-width: 360px; margin: 10px auto 0; color: rgba(255, 255, 255, .82); font-size: 14px; line-height: 1.5; }
-
-        /* action button */
-        .lwResult__action { min-width: 220px; min-height: 54px; margin-top: 26px; border: 1px solid rgba(255, 90, 130, .68); border-radius: 999px; color: #fff; font-size: 17px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; background: linear-gradient(180deg, rgba(255, 255, 255, .18), transparent 30%), linear-gradient(180deg, #ef234f 0%, #cb0d3a 52%, #8f0128 100%); box-shadow: 0 12px 24px rgba(0, 0, 0, .32), 0 0 16px rgba(255, 0, 80, .18), inset 0 1px 0 rgba(255, 255, 255, .18); }
-
-            .lwResult__action:hover { transform: translateY(-1px); filter: brightness(1.05); }
-
-        /* ================================
-   LOSE POPUP
-================================ */
-
-        .lwPopup.is-lose .lwPopup__title { color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 32%), linear-gradient(180deg, #294a8f 0%, #17346f 52%, #0d2251 100%); border-color: rgba(90, 150, 255, .45); box-shadow: 0 8px 18px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .12); }
-
-        .lwResult--lose .lwResult__icon { border-color: rgba(104, 170, 255, .55); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #183b7a 0%, #0b2454 100%); color: #fff; box-shadow: 0 0 0 8px rgba(255, 255, 255, .04), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .10); }
-
-        .lwResult--lose .lwResult__title { color: #f4f8ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .45), 0 0 10px rgba(90, 150, 255, .12); }
-
-        .lwResult--lose .lwResult__reward { color: #dbe9ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
-
-            .lwResult--lose .lwResult__reward::before { background: linear-gradient(90deg, transparent, rgba(120, 170, 255, .24), transparent); }
-
-        .lwResult--lose .lwResult__desc { color: rgba(255, 255, 255, .82); }
-
-        .lwResult--lose .lwResult__action { color: #fff; border-color: rgba(90, 150, 255, .42); background: linear-gradient(180deg, rgba(255, 255, 255, .14), transparent 30%), linear-gradient(180deg, #355ea8 0%, #1d3d7c 52%, #10295c 100%); box-shadow: 0 10px 20px rgba(0, 0, 0, .28), 0 0 14px rgba(64, 138, 255, .16), inset 0 1px 0 rgba(255, 255, 255, .14); }
-
-        /* ================================
-   SPIN ALL POPUP
-================================ */
-
-        .lwResult--spinAll .lwResult__title { font-size: clamp(30px, 3.5vw, 42px); }
-
-        .lwSpinAllList { max-height: min(320px, 42vh); margin-top: 18px; gap: 8px; }
-
-        .lwSpinAllItem { border-color: rgba(64, 138, 255, .26); background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025)), rgba(4, 16, 48, .52); }
-
-            .lwSpinAllItem.is-lose { border-color: rgba(120, 170, 255, .14); background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)), rgba(18, 42, 88, .42); opacity: .88; }
-
-        /* ================================
-   MOBILE
-================================ */
-
+        /* mobile 微调：不要改比例，只微调里面间距 */
         @media (max-width: 767px) {
-            .lwPopup { padding: 18px 12px; }
+            .lwPopup.is-open .lwPopup__card { width: min(390px, 94vw, calc(88dvh * 560 / 879)); aspect-ratio: 560 / 879; padding: calc(235 / 560 * 100%) calc(46 / 560 * 100%) calc(135 / 560 * 100%); }
 
-            .lwPopup__card { width: min(430px, 94vw); max-height: 86dvh; border-radius: 22px; }
+            .lwPopup__head { margin-bottom: 8px; }
 
-                .lwPopup__card::before { inset: -6px; border-radius: 26px; }
-
-                .lwPopup__card::after { border-radius: 18px; }
-
-            .lwPopup__head { height: 50px; }
-
-            .lwPopup__title { top: -20px; min-width: 148px; padding: 10px 22px; font-size: 13px; }
-
-            .lwPopup__close { right: 7px; top: 7px; width: 34px; height: 34px; font-size: 26px; }
-
-            .lwPopup__body { padding: 2px 20px 26px; }
-
-            .lwResult__icon { width: 88px; height: 88px; margin: 6px auto 14px; font-size: 38px; border-width: 2px; }
-
-            .lwResult__title { font-size: clamp(28px, 9vw, 38px); }
-
-            .lwResult__reward { margin-top: 12px; padding-top: 12px; font-size: 22px; line-height: 1.15; }
-
-            .lwResult__desc { margin-top: 8px; font-size: 12px; line-height: 1.45; }
-
-            .lwResult__action { min-width: 180px; min-height: 46px; margin-top: 20px; font-size: 14px; }
-
-            .lwSpinAllList { max-height: min(300px, 42dvh); margin-top: 14px; gap: 7px; }
-
-            .lwSpinAllItem { grid-template-columns: 42px 28px 1fr; min-height: 40px; padding: 7px 10px; gap: 7px; }
-
-            .lwSpinAllItem__index { font-size: 11px; }
-
-            .lwSpinAllItem__icon { font-size: 17px; }
-
-            .lwSpinAllItem__name { font-size: 12px; line-height: 1.25; }
+            .lwPopup__title { min-width: 148px; padding: 9px 20px; font-size: 13px; }
         }
 
         @media (max-width: 380px) {
-            .lwPopup__body { padding-inline: 16px; }
-
-            .lwResult__title { font-size: 30px; }
-
-            .lwResult__reward { font-size: 20px; }
-
-            .lwResult__action { min-width: 168px; min-height: 44px; font-size: 13px; }
+            .lwPopup.is-open .lwPopup__card { width: min(350px, 94vw, calc(88dvh * 560 / 879)); padding: calc(225 / 560 * 100%) calc(42 / 560 * 100%) calc(125 / 560 * 100%); }
         }
     </style>
 
@@ -764,12 +691,15 @@
         <div class="lwPopup" id="lwPopup">
             <div class="lwPopupConfetti" id="lwPopupConfetti" aria-hidden="true"></div>
             <div class="lwPopup__card">
-                <div class="lwPopup__head">
-                    <h2 class="lwPopup__title" id="lwPopupTitle">Popup</h2>
-                    <button class="lwPopup__close" type="button" id="lwPopupClose">×</button>
-                </div>
+                <button class="lwPopup__close" type="button" id="lwPopupClose">×</button>
 
-                <div class="lwPopup__body" id="lwPopupBody"></div>
+                <div class="lwPopup__inner">
+                    <div class="lwPopup__head">
+                        <h2 class="lwPopup__title" id="lwPopupTitle">Popup</h2>
+                    </div>
+
+                    <div class="lwPopup__body" id="lwPopupBody"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -879,56 +809,48 @@
             {
                 index: 0,
                 name: "Try Again",
-                icon: "🙂",
                 type: "lose",
                 tag: "No Prize"
             },
             {
                 index: 1,
                 name: "Bonus RM 88",
-                icon: "💰",
                 type: "win",
                 tag: "Grand Prize"
             },
             {
                 index: 2,
                 name: "Mystery Gift",
-                icon: "🎁",
                 type: "win",
                 tag: "Random Bonus"
             },
             {
                 index: 3,
                 name: "Bonus RM 18",
-                icon: "🪙",
                 type: "win",
                 tag: "Lucky Bonus"
             },
             {
                 index: 4,
                 name: "VIP Point x100",
-                icon: "⭐",
                 type: "win",
                 tag: "Member Reward"
             },
             {
                 index: 5,
                 name: "Bonus RM 8",
-                icon: "💵",
                 type: "win",
                 tag: "Lucky Bonus"
             },
             {
                 index: 6,
                 name: "Free Spin x5",
-                icon: "🎲",
                 type: "win",
                 tag: "Extra Spin"
             },
             {
                 index: 7,
                 name: "iPhone 17 Pro Max 1TB (Silver)",
-                icon: "📱",
                 type: "win",
                 tag: "Extra Spin"
             }
@@ -1256,7 +1178,27 @@
                 clearPopupConfetti();
             }, 1500);
         }
+        function renderPopupPrizeVisual(prize, shouldShowVisual) {
+            if (!shouldShowVisual) return "";
 
+            if (prize.image) {
+                return `
+            <div class="lwResult__icon lwResult__icon--image">
+                <img src="${escapeHTML(prize.image)}" alt="${escapeHTML(prize.name)}">
+            </div>
+        `;
+            }
+
+            if (prize.icon) {
+                return `
+            <div class="lwResult__icon">
+                ${prize.icon}
+            </div>
+        `;
+            }
+
+            return "";
+        }
         function openResultPopup(prize) {
             const isLose = prize.type === "lose";
 
@@ -1267,9 +1209,7 @@
 
             popupBody.innerHTML = `
                                                         <div class="lwResult ${isLose ? "lwResult--lose" : "lwResult--win"}">
-                                                            <div class="lwResult__icon">
-                                                                ${prize.icon}
-                                                            </div>
+                                                           ${renderPopupPrizeVisual(prize, isLose)}
 
                                                             <h3 class="lwResult__title">
                                                                 ${isLose ? "Good Luck" : "Congratulations!"}
@@ -1281,7 +1221,7 @@
 
                                                             <p class="lwResult__desc">
                                                                 ${isLose
-                    ? "No prize this time. Try again and your luck may come next."
+                    ? "Try again and your luck may come next."
                     : "Your reward has been selected. Please claim it according to the event rules."
                 }
                                                             </p>
@@ -1431,7 +1371,6 @@
                                             style="--reveal-index: ${index};"
                                         >
                                             <span class="lwSpinAllItem__index">#${String(index + 1).padStart(2, "0")}</span>
-                                            <span class="lwSpinAllItem__icon">${prize.icon}</span>
                                             <span class="lwSpinAllItem__name">${prize.name}</span>
                                         </div>
                                     `;
