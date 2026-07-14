@@ -305,436 +305,457 @@
         }
     </style>
     <style>
-            /* =========================================================
-           FIFA THEME - FULL THEME OVERRIDE
-           Replace the old FIFA style blocks with this one.
-        ========================================================= */
+                /* =========================================================
+                   FIFA THEME - FULL THEME OVERRIDE
+                   Replace the old FIFA style blocks with this one.
+                ========================================================= */
 
-            :root { --lw-bg-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-base-image: url('image/wheel_base.png'); --lw-wheel-shell-image: url('image/fifa/wheel_shell2.png'); --lw-wheel-seg-1-start: #bfff48; --lw-wheel-seg-1-end: #73d358; --lw-wheel-seg-2-start: #f18080; --lw-wheel-seg-2-end: #ef2227; --lw-wheel-seg-3-start: #72def1; --lw-wheel-seg-3-end: #3b69d9; --lw-wheel-lose-seg-start: #8a7a96; --lw-wheel-lose-seg-end: #4e4358; --fifa-panel-bg: rgba(2, 14, 24, .8); --fifa-red: #c60033; --fifa-red-dark: #970027; --fifa-spin-bg-size: clamp(218px, 18.4vw, 254px); --fifa-spin-btn-size: clamp(118px, 10.2vw, 138px); --fifa-chance-h: clamp(72px, 11vw, 121px); --fifa-chance-mt: clamp(-52px, -4.2vw, -18px); --fifa-chance-mb: clamp(-30px, -2vw, -8px); --fifa-chance-pad-bottom: clamp(18px, 3.2vw, 36px); --fifa-action-font: clamp(16px, 2.25vw, 26px); --fifa-action-height: clamp(48px, 5.7vw, 68px); }
+                :root { --lw-bg-image: url('image/fifa/wheel_bg.jpg'); --lw-wheel-base-image: url('image/wheel_base.png'); --lw-wheel-shell-image: url('image/fifa/wheel_shell2.png'); --lw-wheel-seg-1-start: #bfff48; --lw-wheel-seg-1-end: #73d358; --lw-wheel-seg-2-start: #f18080; --lw-wheel-seg-2-end: #ef2227; --lw-wheel-seg-3-start: #72def1; --lw-wheel-seg-3-end: #3b69d9; --lw-wheel-lose-seg-start: #8a7a96; --lw-wheel-lose-seg-end: #4e4358; --fifa-panel-bg: rgba(2, 14, 24, .8); --fifa-red: #c60033; --fifa-red-dark: #970027; --fifa-spin-bg-size: clamp(218px, 18.4vw, 254px); --fifa-spin-btn-size: clamp(118px, 10.2vw, 138px); --fifa-chance-h: clamp(72px, 11vw, 121px); --fifa-chance-mt: clamp(-52px, -4.2vw, -18px); --fifa-chance-mb: clamp(-30px, -2vw, -8px); --fifa-chance-pad-bottom: clamp(18px, 3.2vw, 36px); --fifa-action-font: clamp(16px, 2.25vw, 26px); --fifa-action-height: clamp(48px, 5.7vw, 68px); }
 
-            /* =========================================================
-           STAGE DECORATION
-        ========================================================= */
+                /* =========================================================
+                   STAGE DECORATION
+                ========================================================= */
 
-            .lwStage { padding-top: 0; isolation: isolate; }
+                .lwStage { padding-top: 0; isolation: isolate; }
 
-                .lwStage::before,
-                .lwStage::after { content: ""; position: absolute; z-index: 0; pointer-events: none; width: clamp(130px, 17vw, 204px); height: clamp(165px, 21.6vw, 259px); border-radius: 0; opacity: .95; background-image: url('image/fifa/img-flag.png'); background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .35)); }
+                    .lwStage::before,
+                    .lwStage::after { content: ""; position: absolute; z-index: 0; pointer-events: none; width: clamp(130px, 17vw, 204px); height: clamp(165px, 21.6vw, 259px); border-radius: 0; opacity: .95; background-image: url('image/fifa/img-flag.png'); background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .35)); }
 
-                .lwStage::before { left: -10%; top: 0; animation: lwFloatBackOne 5.2s ease-in-out infinite; }
+                    .lwStage::before { left: -10%; top: 0; animation: lwFloatBackOne 5.2s ease-in-out infinite; }
 
-                .lwStage::after { right: -10%; top: 0; animation: lwFloatBackTwo 6s ease-in-out infinite; }
+                    .lwStage::after { right: -10%; top: 0; animation: lwFloatBackTwo 6s ease-in-out infinite; }
 
-            @keyframes lwFloatBackOne {
-                0%, 100% { transform: translate3d(0, 0, 0); }
-                50% { transform: translate3d(0, -14px, 0); }
-            }
+                @keyframes lwFloatBackOne {
+                    0%, 100% { transform: translate3d(0, 0, 0); }
+                    50% { transform: translate3d(0, -14px, 0); }
+                }
 
-            @keyframes lwFloatBackTwo {
-                0%, 100% { transform: translate3d(0, 0, 0); }
-                50% { transform: translate3d(0, -18px, 0); }
-            }
+                @keyframes lwFloatBackTwo {
+                    0%, 100% { transform: translate3d(0, 0, 0); }
+                    50% { transform: translate3d(0, -18px, 0); }
+                }
 
-            @keyframes lwFloatFront {
-                0%, 100% { transform: translate3d(0, 0, 0); }
-                50% { transform: translate3d(0, -12px, 0); }
-            }
+                @keyframes lwFloatFront {
+                    0%, 100% { transform: translate3d(0, 0, 0); }
+                    50% { transform: translate3d(0, -12px, 0); }
+                }
 
-            /* =========================================================
-           WHEEL THEME
-        ========================================================= */
+                /* =========================================================
+                   WHEEL THEME
+                ========================================================= */
 
-            .lwWheelWrap { width: min(650px, 100%); filter: drop-shadow(0 34px 34px rgba(0, 0, 0, .48)) drop-shadow(0 0 26px rgba(255, 207, 89, .24)); }
+                .lwWheelWrap { width: min(650px, 100%); filter: drop-shadow(0 34px 34px rgba(0, 0, 0, .48)) drop-shadow(0 0 26px rgba(255, 207, 89, .24)); }
 
-                .lwWheelWrap::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 6; width: var(--fifa-spin-bg-size); height: var(--fifa-spin-bg-size); transform: translate(-50%, -50%); pointer-events: none; background-image: url("image/fifa/spin_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; filter: drop-shadow(0 24px 24px rgba(0, 0, 0, .5)) drop-shadow(0 0 32px rgba(255, 216, 112, .45)); }
+                    .lwWheelWrap::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 6; width: var(--fifa-spin-bg-size); height: var(--fifa-spin-bg-size); transform: translate(-50%, -50%); pointer-events: none; background-image: url("image/fifa/spin_bg.png"); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; filter: drop-shadow(0 24px 24px rgba(0, 0, 0, .5)) drop-shadow(0 0 32px rgba(255, 216, 112, .45)); }
 
-                .lwWheelWrap::after { bottom: -24px; width: 88%; height: 90px; background: radial-gradient( ellipse, rgba(255, 213, 94, .42), rgba(167, 52, 71, .18) 42%, transparent 72% ); }
+                    .lwWheelWrap::after { bottom: -24px; width: 88%; height: 90px; background: radial-gradient( ellipse, rgba(255, 213, 94, .42), rgba(167, 52, 71, .18) 42%, transparent 72% ); }
 
-        .lwChance::after { content: ""; position: absolute; right: 0; top: -100%; z-index: 9; width: clamp(60px, 13vw, 120px); height: clamp(60px, 13vw, 120px); pointer-events: none; background-image: url('image/fifa/img-ball.png'); background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .38)); animation: lwFloatFront 4.8s ease-in-out infinite; display:block !important; clip-path:none; border-radius:9999px;}
+                .lwChance::after { content: ""; position: absolute; right: 0; top: -100%; z-index: 9; width: clamp(60px, 13vw, 120px); height: clamp(60px, 13vw, 120px); pointer-events: none; background-image: url('image/fifa/img-ball.png'); background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0 16px 18px rgba(0, 0, 0, .38)); animation: lwFloatFront 4.8s ease-in-out infinite; display: block !important; clip-path: none; border-radius: 9999px; }
 
-            .lwWheelDisc { width: 87%; height: 87%; --lw-label-distance: -245px; box-shadow: inset 0 0 0 2px rgba(255, 245, 190, .24), inset 0 0 38px rgba(0, 0, 0, .52), inset 0 0 90px rgba(0, 0, 0, .18); filter: saturate(1.28) contrast(1.08) brightness(1.03); }
+                .lwWheelDisc { width: 87%; height: 87%; --lw-label-distance: -245px; box-shadow: inset 0 0 0 2px rgba(255, 245, 190, .24), inset 0 0 38px rgba(0, 0, 0, .52), inset 0 0 90px rgba(0, 0, 0, .18); filter: saturate(1.28) contrast(1.08) brightness(1.03); }
 
-                .lwWheelDisc::before { z-index: 1; background: repeating-conic-gradient( from 0deg, rgba(255, 241, 168, .95) 0deg 1.05deg, rgba(255, 186, 50, .72) 1.05deg 1.55deg, transparent 1.55deg 45deg ), radial-gradient(circle at 50% 50%, transparent 0 40%, rgba(255, 255, 255, .10) 41%, transparent 43%), radial-gradient(circle at 34% 22%, rgba(255, 255, 255, .25), transparent 27%), radial-gradient(circle at 50% 52%, transparent 0 52%, rgba(0, 0, 0, .25) 74%, rgba(0, 0, 0, .42) 100%); mix-blend-mode: screen; opacity: .76; }
+                    .lwWheelDisc::before { z-index: 1; background: repeating-conic-gradient( from 0deg, rgba(255, 241, 168, .95) 0deg 1.05deg, rgba(255, 186, 50, .72) 1.05deg 1.55deg, transparent 1.55deg 45deg ), radial-gradient(circle at 50% 50%, transparent 0 40%, rgba(255, 255, 255, .10) 41%, transparent 43%), radial-gradient(circle at 34% 22%, rgba(255, 255, 255, .25), transparent 27%), radial-gradient(circle at 50% 52%, transparent 0 52%, rgba(0, 0, 0, .25) 74%, rgba(0, 0, 0, .42) 100%); mix-blend-mode: screen; opacity: .76; }
 
-                .lwWheelDisc::after { z-index: 2; background: repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .055) 0 1px, transparent 1px 7px), radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .20) 0 22%, transparent 23% 67%, rgba(255, 255, 255, .11) 68%, transparent 71%); opacity: .42; }
+                    .lwWheelDisc::after { z-index: 2; background: repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .055) 0 1px, transparent 1px 7px), radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .20) 0 22%, transparent 23% 67%, rgba(255, 255, 255, .11) 68%, transparent 71%); opacity: .42; }
 
-            .lwWheel__label { z-index: 3; width: clamp(116px, 9.8vw, 148px); margin-left: calc(clamp(116px, 9.8vw, 148px) / -2); padding: 4px 3px; color: #fffdf0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(18px, 1.55vw, 26px) !important; font-weight: 1000; line-height: .98; letter-spacing: -.045em; text-transform: none; text-shadow: 0 2px 0 rgba(44, 13, 4, .72), 0 4px 8px rgba(0, 0, 0, .56), 0 0 12px rgba(0, 0, 0, .32); -webkit-text-stroke: .45px rgba(60, 15, 2, .36); transform-origin: 50% 0; }
+                .lwWheel__label { z-index: 3; width: clamp(116px, 9.8vw, 148px); margin-left: calc(clamp(116px, 9.8vw, 148px) / -2); padding: 4px 3px; color: #fffdf0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(18px, 1.55vw, 26px) !important; font-weight: 1000; line-height: .98; letter-spacing: -.045em; text-transform: none; text-shadow: 0 2px 0 rgba(44, 13, 4, .72), 0 4px 8px rgba(0, 0, 0, .56), 0 0 12px rgba(0, 0, 0, .32); -webkit-text-stroke: .45px rgba(60, 15, 2, .36); transform-origin: 50% 0; }
 
-                .lwWheel__label span { display: block; }
+                    .lwWheel__label span { display: block; }
 
-                .lwWheel__label[data-prize-index="0"],
-                .lwWheel__label[data-prize-index="1"],
-                .lwWheel__label[data-prize-index="2"],
-                .lwWheel__label[data-prize-index="3"],
-                .lwWheel__label[data-prize-index="4"],
-                .lwWheel__label[data-prize-index="5"],
-                .lwWheel__label[data-prize-index="6"] { font-size: clamp(16px, 2.1vw, 26px) !important; }
+                    .lwWheel__label[data-prize-index="0"],
+                    .lwWheel__label[data-prize-index="1"],
+                    .lwWheel__label[data-prize-index="2"],
+                    .lwWheel__label[data-prize-index="3"],
+                    .lwWheel__label[data-prize-index="4"],
+                    .lwWheel__label[data-prize-index="5"],
+                    .lwWheel__label[data-prize-index="6"] { font-size: clamp(16px, 2.1vw, 26px) !important; }
 
-                .lwWheel__label[data-prize-index="7"] { width: clamp(120px, 9.6vw, 142px); margin-left: calc(clamp(120px, 9.6vw, 142px) / -2); font-size: clamp(18px, 2vw, 22px) !important; line-height: 1.02; letter-spacing: -.04em; }
+                    .lwWheel__label[data-prize-index="7"] { width: clamp(120px, 9.6vw, 142px); margin-left: calc(clamp(120px, 9.6vw, 142px) / -2); font-size: clamp(18px, 2vw, 22px) !important; line-height: 1.02; letter-spacing: -.04em; }
 
-            .lwPointer { top: 26%; left: 50%; z-index: 8; width: clamp(42px, 6.5vw, 70px); height: clamp(66px, 10vw, 110px); transform: translateX(-50%) rotate(180deg); filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .42)) drop-shadow(0 0 12px rgba(255, 220, 100, .62)); }
+                .lwPointer { top: 26%; left: 50%; z-index: 8; width: clamp(42px, 6.5vw, 70px); height: clamp(66px, 10vw, 110px); transform: translateX(-50%) rotate(180deg); filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .42)) drop-shadow(0 0 12px rgba(255, 220, 100, .62)); }
 
-            /* =========================================================
-           CENTER SPIN BUTTON
-        ========================================================= */
+                /* =========================================================
+                   CENTER SPIN BUTTON
+                ========================================================= */
 
-            .lwSpinBtn-Con { position: absolute; left: 50%; top: 50%; z-index: 9; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: translate(-50%, -50%); display: grid; place-items: center; overflow: visible; }
+                .lwSpinBtn-Con { position: absolute; left: 50%; top: 50%; z-index: 9; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: translate(-50%, -50%); display: grid; place-items: center; overflow: visible; }
 
-                .lwSpinBtn-Con::before,
-                .lwSpinBtn-Con::after { content: ""; position: absolute; inset: -18px; border-radius: 50%; pointer-events: none; }
+                    .lwSpinBtn-Con::before,
+                    .lwSpinBtn-Con::after { content: ""; position: absolute; inset: -18px; border-radius: 50%; pointer-events: none; }
 
-                .lwSpinBtn-Con::before { background: conic-gradient( from 20deg, transparent, rgba(255, 235, 149, .65), transparent 34%, rgba(255, 255, 255, .45), transparent 68%, rgba(255, 217, 94, .5), transparent ); filter: blur(6px); opacity: .72; animation: lwCenterGlowSpin 5.5s linear infinite; }
+                    .lwSpinBtn-Con::before { background: conic-gradient( from 20deg, transparent, rgba(255, 235, 149, .65), transparent 34%, rgba(255, 255, 255, .45), transparent 68%, rgba(255, 217, 94, .5), transparent ); filter: blur(6px); opacity: .72; animation: lwCenterGlowSpin 5.5s linear infinite; }
 
-                .lwSpinBtn-Con::after { inset: -7px; border: 2px solid rgba(255, 240, 174, .72); box-shadow: 0 0 16px rgba(255, 224, 118, .56), inset 0 0 14px rgba(255, 255, 255, .22); }
+                    .lwSpinBtn-Con::after { inset: -7px; border: 2px solid rgba(255, 240, 174, .72); box-shadow: 0 0 16px rgba(255, 224, 118, .56), inset 0 0 14px rgba(255, 255, 255, .22); }
 
-            .lwSpinBtn { position: relative; z-index: 1; left: auto; top: auto; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 0; border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 22%, rgba(255, 255, 255, .46), transparent 26%), radial-gradient(circle at 50% 82%, rgba(60, 0, 0, .55), transparent 42%), linear-gradient(180deg, #ff4046 0%, #c4071f 48%, #73000d 100%); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .28), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 12px 28px rgba(0, 0, 0, .5), 0 0 28px rgba(255, 221, 100, .46); text-shadow: 0 2px 0 rgba(70, 0, 0, .75), 0 4px 12px rgba(0, 0, 0, .5); transition: transform .16s ease, filter .16s ease, box-shadow .16s ease; }
+                .lwSpinBtn { position: relative; z-index: 1; left: auto; top: auto; width: var(--fifa-spin-btn-size); height: var(--fifa-spin-btn-size); transform: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: 0; border-radius: 50%; color: #fff; background: radial-gradient(circle at 35% 22%, rgba(255, 255, 255, .46), transparent 26%), radial-gradient(circle at 50% 82%, rgba(60, 0, 0, .55), transparent 42%), linear-gradient(180deg, #ff4046 0%, #c4071f 48%, #73000d 100%); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .28), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 12px 28px rgba(0, 0, 0, .5), 0 0 28px rgba(255, 221, 100, .46); text-shadow: 0 2px 0 rgba(70, 0, 0, .75), 0 4px 12px rgba(0, 0, 0, .5); transition: transform .16s ease, filter .16s ease, box-shadow .16s ease; }
 
-                .lwSpinBtn:hover:not(:disabled) { transform: translateY(-1px) scale(1.035); filter: brightness(1.08) saturate(1.08); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .32), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 16px 30px rgba(0, 0, 0, .52), 0 0 36px rgba(255, 221, 100, .62); }
+                    .lwSpinBtn:hover:not(:disabled) { transform: translateY(-1px) scale(1.035); filter: brightness(1.08) saturate(1.08); box-shadow: inset 0 4px 0 rgba(255, 255, 255, .32), inset 0 -10px 18px rgba(60, 0, 0, .48), 0 16px 30px rgba(0, 0, 0, .52), 0 0 36px rgba(255, 221, 100, .62); }
 
-                .lwSpinBtn:active { transform: scale(.96); }
+                    .lwSpinBtn:active { transform: scale(.96); }
 
-                .lwSpinBtn:disabled { filter: grayscale(.15) brightness(.72); }
+                    .lwSpinBtn:disabled { filter: grayscale(.15) brightness(.72); }
 
-            .lwSpinBtn__top { color: #ffe580; font-size: clamp(26px, 3vw, 39px); line-height: .82; font-weight: 1000; letter-spacing: -.065em; }
+                .lwSpinBtn__top { color: #ffe580; font-size: clamp(26px, 3vw, 39px); line-height: .82; font-weight: 1000; letter-spacing: -.065em; }
 
-            .lwSpinBtn__bottom { color: #fff; font-size: clamp(22px, 2.55vw, 34px); line-height: .82; font-weight: 1000; letter-spacing: -.055em; }
+                .lwSpinBtn__bottom { color: #fff; font-size: clamp(22px, 2.55vw, 34px); line-height: .82; font-weight: 1000; letter-spacing: -.055em; }
 
-            @keyframes lwCenterGlowSpin {
-                to { transform: rotate(360deg); }
-            }
+                @keyframes lwCenterGlowSpin {
+                    to { transform: rotate(360deg); }
+                }
 
-            /* =========================================================
-           CHANCE RIBBON + ACTION BUTTONS
-        ========================================================= */
+                /* =========================================================
+                   CHANCE RIBBON + ACTION BUTTONS
+                ========================================================= */
 
-            .lwChance { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; width: clamp(360px, 45vw, 650px); min-height: var(--fifa-chance-h); margin: var(--fifa-chance-mt) auto var(--fifa-chance-mb); padding: 0 7% var(--fifa-chance-pad-bottom); background-image: url('image/fifa/gold-ribbon.png'); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; border: 0; box-shadow: none; transform: translateY(-4px); filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .28)) drop-shadow(0 0 18px rgba(255, 212, 80, .28)); }
+                .lwChance { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; width: clamp(360px, 45vw, 650px); min-height: var(--fifa-chance-h); margin: var(--fifa-chance-mt) auto var(--fifa-chance-mb); padding: 0 7% var(--fifa-chance-pad-bottom); background-image: url('image/fifa/gold-ribbon.png'); background-size: 100% 100%; background-repeat: no-repeat; background-position: center; border: 0; box-shadow: none; transform: translateY(-4px); filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .28)) drop-shadow(0 0 18px rgba(255, 212, 80, .28)); }
 
-                .lwChance::before,
-                .lwChance::after { display: none; }
+                    .lwChance::before,
+                    .lwChance::after { display: none; }
 
-            .lwChance__main { align-items: baseline; gap: clamp(4px, 1vw, 8px); white-space: nowrap; }
+                .lwChance__main { align-items: baseline; gap: clamp(4px, 1vw, 8px); white-space: nowrap; }
 
-                .lwChance__main strong { color: #000; font-size: clamp(32px, 5.3vw, 54px); line-height: 1; font-weight: 1000; letter-spacing: -.04em; text-shadow: none; }
+                    .lwChance__main strong { color: #000; font-size: clamp(32px, 5.3vw, 54px); line-height: 1; font-weight: 1000; letter-spacing: -.04em; text-shadow: none; }
 
-                .lwChance__main span { color: #000; font-size: clamp(13px, 2vw, 21px); font-weight: 1000; letter-spacing: -.02em; }
+                    .lwChance__main span { color: #000; font-size: clamp(13px, 2vw, 21px); font-weight: 1000; letter-spacing: -.02em; }
 
-            .lwSpinActions { width: min(560px, 92%); gap: clamp(8px, 1.6vw, 14px); }
+                .lwSpinActions { width: min(560px, 92%); gap: clamp(8px, 1.6vw, 14px); }
 
-            .lwSpinAction { min-height: var(--fifa-action-height); padding: 0 18px; border: 0; border-radius: 0; color: #fff; font-size: var(--fifa-action-font); line-height: 1; letter-spacing: .02em; white-space: nowrap; background-size: 100% 100%; background-repeat: no-repeat; background-position: center; }
+                .lwSpinAction { min-height: var(--fifa-action-height); padding: 0 18px; border: 0; border-radius: 0; color: #fff; font-size: var(--fifa-action-font); line-height: 1; letter-spacing: .02em; white-space: nowrap; background-size: 100% 100%; background-repeat: no-repeat; background-position: center; }
 
-                .lwSpinAction:disabled { cursor: not-allowed; filter: brightness(.68) saturate(.9); }
+                    .lwSpinAction:disabled { cursor: not-allowed; filter: brightness(.68) saturate(.9); }
 
-            .lwSpinAction--single { background-image: url('image/fifa/img-btn-red.png'); }
+                .lwSpinAction--single { background-image: url('image/fifa/img-btn-red.png'); }
 
-            .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
+                .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
 
-            .lwSpinNote { width: auto; font-size: 22px; }
+                .lwSpinNote { width: auto; font-size: 22px; }
 
-            /* =========================================================
-           HISTORY PANEL
-        ========================================================= */
+                /* =========================================================
+                   HISTORY PANEL
+                ========================================================= */
 
-            .lwPanel { background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); }
+                .lwPanel { background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); }
 
-                .lwPanel::before { display: none; }
+                    .lwPanel::before { display: none; }
 
-            .lwPanel__head { margin: 0 0 8px; }
+                .lwPanel__head { margin: 0 0 8px; }
 
-                .lwPanel__head::after { display: none; }
+                    .lwPanel__head::after { display: none; }
 
-            .lwhead__container { min-height: clamp(92px, 16vw, 150px); margin-top: clamp(-100px, -10vw, -40px); background-image: url('image/fifa/img-trophy.png'); background-repeat: no-repeat; background-position: center top; background-size: contain; display: flex; align-items: flex-end; justify-content: center; }
+                .lwhead__container { min-height: clamp(92px, 16vw, 150px); margin-top: clamp(-100px, -10vw, -40px); background-image: url('image/fifa/img-trophy.png'); background-repeat: no-repeat; background-position: center top; background-size: contain; display: flex; align-items: flex-end; justify-content: center; }
 
-            .lwPanel__head h2 { margin: 0; padding: 0 0 clamp(12px, 2.2vw, 22px); color: #fff; font-family: Arial, sans-serif; font-size: clamp(12px, 1.45vw, 16px); line-height: 1; letter-spacing: 0; text-transform: uppercase; }
+                .lwPanel__head h2 { margin: 0; padding: 0 0 clamp(12px, 2.2vw, 22px); color: #fff; font-family: Arial, sans-serif; font-size: clamp(12px, 1.45vw, 16px); line-height: 1; letter-spacing: 0; text-transform: uppercase; }
 
-            /* =========================================================
-           TNC
-        ========================================================= */
+                /* =========================================================
+                   TNC
+                ========================================================= */
 
-            .lwTnc { margin-top: 32px; background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); overflow: visible; }
+                .lwTnc { margin-top: 32px; background: var(--fifa-panel-bg); border-color: var(--fifa-red-dark); overflow: visible; }
 
-                .lwTnc::before { display: none; }
+                    .lwTnc::before { display: none; }
 
-            .lwTnc__head { position: relative; width: min(430px, calc(100% - 28px)); min-height: clamp(44px, 5.2vw, 56px); margin: -28px auto 0; padding: 0 clamp(34px, 5vw, 56px); display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 38%), linear-gradient(180deg, #d8003b 0%, #c60033 48%, #970027 100%); border: 1px solid rgba(255, 60, 100, .65); clip-path: polygon(6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -3px 0 rgba(80, 0, 20, .28), 0 10px 22px rgba(0, 0, 0, .28); }
+                .lwTnc__head { position: relative; width: min(430px, calc(100% - 28px)); min-height: clamp(44px, 5.2vw, 56px); margin: -28px auto 0; padding: 0 clamp(34px, 5vw, 56px); display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 38%), linear-gradient(180deg, #d8003b 0%, #c60033 48%, #970027 100%); border: 1px solid rgba(255, 60, 100, .65); clip-path: polygon(6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 -3px 0 rgba(80, 0, 20, .28), 0 10px 22px rgba(0, 0, 0, .28); }
 
-                .lwTnc__head::before { content: ""; position: absolute; inset: 6px 12px; clip-path: inherit; border: 1px solid rgba(255, 255, 255, .08); pointer-events: none; }
+                    .lwTnc__head::before { content: ""; position: absolute; inset: 6px 12px; clip-path: inherit; border: 1px solid rgba(255, 255, 255, .08); pointer-events: none; }
 
-                .lwTnc__head::after { content: none; }
+                    .lwTnc__head::after { content: none; }
 
-                .lwTnc__head h2 { position: relative; z-index: 1; margin: 0; color: #fff; font-family: Arial, sans-serif; font-size: clamp(15px, 2.2vw, 22px); line-height: 1; font-weight: 900; letter-spacing: .035em; text-align: center; text-transform: uppercase; white-space: nowrap; text-shadow: 0 2px 0 rgba(60, 0, 18, .55), 0 4px 10px rgba(0, 0, 0, .35); }
+                    .lwTnc__head h2 { position: relative; z-index: 1; margin: 0; color: #fff; font-family: Arial, sans-serif; font-size: clamp(15px, 2.2vw, 22px); line-height: 1; font-weight: 900; letter-spacing: .035em; text-align: center; text-transform: uppercase; white-space: nowrap; text-shadow: 0 2px 0 rgba(60, 0, 18, .55), 0 4px 10px rgba(0, 0, 0, .35); }
 
-            /* =========================================================
-           FIFA POPUP THEME
-           Requires .lwPopup__inner wrapper inside .lwPopup__card
-        ========================================================= */
+                /* =========================================================
+                   FIFA POPUP THEME
+                   Requires .lwPopup__inner wrapper inside .lwPopup__card
+                ========================================================= */
 
-            .lwPopup.is-open .lwPopup__card { position: relative; width: min(560px, 92vw, calc(88vh * 560 / 879)); aspect-ratio: 560 / 879; padding: 0; border: 0; border-radius: 0; max-height: none; overflow: visible; box-shadow: none; background-image: url('image/fifa/popup_box.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; display: block; }
+                .lwPopup.is-open .lwPopup__card { position: relative; width: min(560px, 92vw, calc(88vh * 560 / 879)); aspect-ratio: 560 / 879; padding: 0; border: 0; border-radius: 0; max-height: none; overflow: visible; box-shadow: none; background-image: url('image/fifa/popup_box.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; display: block; }
 
-            .lwPopup__card::before,
-            .lwPopup__card::after { display: none; }
+                .lwPopup__card::before,
+                .lwPopup__card::after { display: none; }
 
-            .lwPopup__inner { position: absolute; top: calc(250 / 879 * 100%); right: calc(50 / 560 * 100%); bottom: calc(150 / 879 * 100%); left: calc(50 / 560 * 100%); display: flex; flex-direction: column; min-height: 0; justify-content:center;}
+                .lwPopup__inner { position: absolute; top: calc(250 / 879 * 100%); right: calc(50 / 560 * 100%); bottom: calc(150 / 879 * 100%); left: calc(50 / 560 * 100%); display: flex; flex-direction: column; min-height: 0; justify-content: center; }
 
-            .lwPopup__head { position: relative; z-index: 3; height: auto; margin: 0 0 24px; display: flex; align-items: center; justify-content: center; }
+                .lwPopup__head { position: relative; z-index: 3; height: auto; margin: 0 0 24px; display: flex; align-items: center; justify-content: center; }
 
-            .lwPopup__title { position: relative; left: auto; top: auto; transform: none; min-width: 180px; margin: 0; padding: 10px 24px; color: #fff; font-family: Arial, sans-serif; font-size: clamp(13px, 1.6vw, 16px); font-weight: 900; line-height: 1; letter-spacing: .06em; text-align: center; text-transform: uppercase; white-space: nowrap; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 30%), linear-gradient(180deg, #d8003b 0%, #b90031 50%, #8c0025 100%); border: 1px solid rgba(255, 70, 110, .72); box-shadow: 0 10px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .18); clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); text-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+                .lwPopup__title { position: relative; left: auto; top: auto; transform: none; min-width: 180px; margin: 0; padding: 10px 24px; color: #fff; font-family: Arial, sans-serif; font-size: clamp(13px, 1.6vw, 16px); font-weight: 900; line-height: 1; letter-spacing: .06em; text-align: center; text-transform: uppercase; white-space: nowrap; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 30%), linear-gradient(180deg, #d8003b 0%, #b90031 50%, #8c0025 100%); border: 1px solid rgba(255, 70, 110, .72); box-shadow: 0 10px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .18); clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%); text-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
 
-                .lwPopup__title::before,
-                .lwPopup__title::after { display: none; }
+                    .lwPopup__title::before,
+                    .lwPopup__title::after { display: none; }
 
-            .lwPopup__close { position: absolute; right: calc(32 / 560 * 100%); top: calc(36 / 879 * 100%); z-index: 6; width: clamp(30px, 7vw, 40px); height: clamp(30px, 7vw, 40px); border: 1px solid rgba(255, 255, 255, .16); border-radius: 50%; color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 26%), linear-gradient(180deg, #d8003b 0%, #aa002d 100%); box-shadow: 0 8px 16px rgba(0, 0, 0, .28); font-size: clamp(24px, 6vw, 30px); display: flex; align-items: center; justify-content: center; }
+                .lwPopup__close { position: absolute; right: calc(32 / 560 * 100%); top: calc(36 / 879 * 100%); z-index: 6; width: clamp(30px, 7vw, 40px); height: clamp(30px, 7vw, 40px); border: 1px solid rgba(255, 255, 255, .16); border-radius: 50%; color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 26%), linear-gradient(180deg, #d8003b 0%, #aa002d 100%); box-shadow: 0 8px 16px rgba(0, 0, 0, .28); font-size: clamp(24px, 6vw, 30px); display: flex; align-items: center; justify-content: center; }
 
-            .lwPopup__body { position: relative; z-index: 2; min-height: 0; padding: 0; display: flex; align-items: center; justify-content: center; }
+                .lwPopup__body { position: relative; z-index: 2; min-height: 0; padding: 0; display: flex; align-items: center; justify-content: center; }
 
-            .lwResult { width: 100%; text-align: center; }
+                .lwResult { width: 100%; text-align: center; }
 
-            .lwResult--win .lwResult__title:first-child { margin-top: 0; }
+                .lwResult--win .lwResult__title:first-child { margin-top: 0; }
 
-            .lwResult__icon { width: 112px; height: 112px; margin: 10px auto 18px; border-radius: 50%; border: 3px solid rgba(72, 160, 255, .68); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #07245f 0%, #04163f 100%); color: #ffd54f; box-shadow: 0 0 0 8px rgba(255, 255, 255, .05), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .12); font-size: 46px; }
+                .lwResult__icon { width: 112px; height: 112px; margin: 10px auto 18px; border-radius: 50%; border: 3px solid rgba(72, 160, 255, .68); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #07245f 0%, #04163f 100%); color: #ffd54f; box-shadow: 0 0 0 8px rgba(255, 255, 255, .05), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .12); font-size: 46px; }
 
-            .lwResult__icon--image { overflow: hidden; padding: 0; }
+                .lwResult__icon--image { overflow: hidden; padding: 0; }
 
-                .lwResult__icon--image img { width: 72%; height: 72%; object-fit: contain; display: block; }
+                    .lwResult__icon--image img { width: 72%; height: 72%; object-fit: contain; display: block; }
 
-            .lwResult__title { margin: 0; color: #fff; font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 4vw, 48px); line-height: 1; text-shadow: 0 3px 10px rgba(0, 0, 0, .45); }
+                .lwResult__title { margin: 0; color: #fff; font-family: Georgia, "Times New Roman", serif; font-size: clamp(28px, 4vw, 48px); line-height: 1; text-shadow: 0 3px 10px rgba(0, 0, 0, .45); }
 
-            .lwResult__reward { margin-top: 14px; padding-top: 14px; color: #ffd95a; font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 900; text-shadow: 0 2px 8px rgba(0, 0, 0, .42); }
+                .lwResult__reward { margin-top: 14px; padding-top: 14px; color: #ffd95a; font-family: Georgia, "Times New Roman", serif; font-size: 28px; font-weight: 900; text-shadow: 0 2px 8px rgba(0, 0, 0, .42); }
 
-                .lwResult__reward::before { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent); }
+                    .lwResult__reward::before { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent); }
 
-            .lwResult__desc { max-width: 360px; margin: 10px auto 0; color: rgba(255, 255, 255, .82); font-size: 14px; line-height: 1.5; }
+                .lwResult__desc { max-width: 360px; margin: 10px auto 0; color: rgba(255, 255, 255, .82); font-size: 14px; line-height: 1.5; }
 
-            .lwResult__action { min-width: 220px; min-height: 54px; margin-top: 26px; border: 1px solid rgba(255, 90, 130, .68); border-radius: 999px; color: #fff; font-size: 17px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; background: linear-gradient(180deg, rgba(255, 255, 255, .18), transparent 30%), linear-gradient(180deg, #ef234f 0%, #cb0d3a 52%, #8f0128 100%); box-shadow: 0 12px 24px rgba(0, 0, 0, .32), 0 0 16px rgba(255, 0, 80, .18), inset 0 1px 0 rgba(255, 255, 255, .18); }
+                .lwResult__action { min-width: 220px; min-height: 54px; margin-top: 26px; border: 1px solid rgba(255, 90, 130, .68); border-radius: 999px; color: #fff; font-size: 17px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; background: linear-gradient(180deg, rgba(255, 255, 255, .18), transparent 30%), linear-gradient(180deg, #ef234f 0%, #cb0d3a 52%, #8f0128 100%); box-shadow: 0 12px 24px rgba(0, 0, 0, .32), 0 0 16px rgba(255, 0, 80, .18), inset 0 1px 0 rgba(255, 255, 255, .18); }
 
-                .lwResult__action:hover { transform: translateY(-1px); filter: brightness(1.05); }
+                    .lwResult__action:hover { transform: translateY(-1px); filter: brightness(1.05); }
 
-            /* Lose popup */
-            .lwPopup.is-lose .lwPopup__title { color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 32%), linear-gradient(180deg, #294a8f 0%, #17346f 52%, #0d2251 100%); border-color: rgba(90, 150, 255, .45); box-shadow: 0 8px 18px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .12); }
+                /* Lose popup */
+                .lwPopup.is-lose .lwPopup__title { color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .12), transparent 32%), linear-gradient(180deg, #294a8f 0%, #17346f 52%, #0d2251 100%); border-color: rgba(90, 150, 255, .45); box-shadow: 0 8px 18px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .12); }
 
-            .lwResult--lose .lwResult__icon { border-color: rgba(104, 170, 255, .55); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #183b7a 0%, #0b2454 100%); color: #fff; box-shadow: 0 0 0 8px rgba(255, 255, 255, .04), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .10); }
+                .lwResult--lose .lwResult__icon { border-color: rgba(104, 170, 255, .55); background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .14), transparent 28%), linear-gradient(180deg, #183b7a 0%, #0b2454 100%); color: #fff; box-shadow: 0 0 0 8px rgba(255, 255, 255, .04), 0 0 24px rgba(64, 138, 255, .18), inset 0 1px 0 rgba(255, 255, 255, .10); }
 
-            .lwResult--lose .lwResult__title { color: #f4f8ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .45), 0 0 10px rgba(90, 150, 255, .12); }
+                .lwResult--lose .lwResult__title { color: #f4f8ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .45), 0 0 10px rgba(90, 150, 255, .12); }
 
-            .lwResult--lose .lwResult__reward { color: #dbe9ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
+                .lwResult--lose .lwResult__reward { color: #dbe9ff; text-shadow: 0 2px 8px rgba(0, 0, 0, .35); }
 
-                .lwResult--lose .lwResult__reward::before { background: linear-gradient(90deg, transparent, rgba(120, 170, 255, .24), transparent); }
+                    .lwResult--lose .lwResult__reward::before { background: linear-gradient(90deg, transparent, rgba(120, 170, 255, .24), transparent); }
 
-            .lwResult--lose .lwResult__desc { color: rgba(255, 255, 255, .82); }
+                .lwResult--lose .lwResult__desc { color: rgba(255, 255, 255, .82); }
 
-            .lwResult--lose .lwResult__action { color: #fff; border-color: rgba(90, 150, 255, .42); background: linear-gradient(180deg, rgba(255, 255, 255, .14), transparent 30%), linear-gradient(180deg, #355ea8 0%, #1d3d7c 52%, #10295c 100%); box-shadow: 0 10px 20px rgba(0, 0, 0, .28), 0 0 14px rgba(64, 138, 255, .16), inset 0 1px 0 rgba(255, 255, 255, .14); }
+                .lwResult--lose .lwResult__action { color: #fff; border-color: rgba(90, 150, 255, .42); background: linear-gradient(180deg, rgba(255, 255, 255, .14), transparent 30%), linear-gradient(180deg, #355ea8 0%, #1d3d7c 52%, #10295c 100%); box-shadow: 0 10px 20px rgba(0, 0, 0, .28), 0 0 14px rgba(64, 138, 255, .16), inset 0 1px 0 rgba(255, 255, 255, .14); }
 
-            /* Spin all popup */
-            .lwResult--spinAll .lwResult__title { font-size: clamp(30px, 3.5vw, 42px); }
+                /* Spin all popup */
+                .lwResult--spinAll .lwResult__title { font-size: clamp(30px, 3.5vw, 42px); }
 
-            .lwSpinAllList { max-height: min(240px, 38vh); margin-top: 18px; gap: 8px; }
+                .lwSpinAllList { max-height: min(240px, 38vh); margin-top: 18px; gap: 8px; }
 
-            .lwSpinAllItem { grid-template-columns: 48px 1fr; border-color: rgba(64, 138, 255, .26); background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025)), rgba(4, 16, 48, .52); }
+                .lwSpinAllItem { grid-template-columns: 48px 1fr; border-color: rgba(64, 138, 255, .26); background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025)), rgba(4, 16, 48, .52); }
 
-                .lwSpinAllItem.is-lose { border-color: rgba(120, 170, 255, .14); background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)), rgba(18, 42, 88, .42); opacity: .88; }
+                    .lwSpinAllItem.is-lose { border-color: rgba(120, 170, 255, .14); background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)), rgba(18, 42, 88, .42); opacity: .88; }
 
-            /* =========================================================
-           RESPONSIVE
-        ========================================================= */
+                /* =========================================================
+                   RESPONSIVE
+                ========================================================= */
 
-            @media (max-width: 1080px) {
-                :root { --fifa-spin-bg-size: clamp(150px, 16.5vw, 180px); --fifa-spin-btn-size: clamp(78px, 8.7vw, 96px); }
+                @media (max-width: 1080px) {
+                    :root { --fifa-spin-bg-size: clamp(150px, 16.5vw, 180px); --fifa-spin-btn-size: clamp(78px, 8.7vw, 96px); }
 
-                .lwLayout { grid-template-columns: minmax(430px, 1fr) minmax(220px, 340px); }
+                    .lwLayout { grid-template-columns: minmax(430px, 1fr) minmax(220px, 340px); }
 
-                .lwWheelDisc { --lw-label-distance: -21vw; }
+                    .lwWheelDisc { --lw-label-distance: -21vw; }
 
-                .lwWheel__label { font-size: clamp(14px, 1.7vw, 20px) !important; }
+                    .lwWheel__label { font-size: clamp(14px, 1.7vw, 20px) !important; }
 
-                    .lwWheel__label[data-prize-index="7"] { font-size: clamp(16px, 1.7vw, 22px) !important; }
+                        .lwWheel__label[data-prize-index="7"] { font-size: clamp(16px, 1.7vw, 22px) !important; }
 
-                .lwSpinActions { width: min(480px, 92%); }
+                    .lwSpinActions { width: min(480px, 92%); }
 
-                .lwSpinNote { font-size: clamp(11px, 1.4vw, 16px); }
+                    .lwSpinNote { font-size: clamp(11px, 1.4vw, 16px); }
 
-                .lwPanel { height: 460px; }
-            }
+                    .lwPanel { height: 460px; }
+                }
 
-            @media (max-width: 767px) {
-                :root { --fifa-spin-bg-size: clamp(104px, 30vw, 130px); --fifa-spin-btn-size: clamp(54px, 16vw, 68px); --fifa-chance-h: clamp(58px, 16vw, 78px); --fifa-chance-mt: -10px; --fifa-chance-mb: -4px; --fifa-chance-pad-bottom: clamp(12px, 4vw, 20px); --fifa-action-font: clamp(13px, 4.2vw, 18px); --fifa-action-height: clamp(44px, 12vw, 54px); }
+                @media (max-width: 767px) {
+                    :root { --fifa-spin-bg-size: clamp(104px, 30vw, 130px); --fifa-spin-btn-size: clamp(54px, 16vw, 68px); --fifa-chance-h: clamp(58px, 16vw, 78px); --fifa-chance-mt: -10px; --fifa-chance-mb: -4px; --fifa-chance-pad-bottom: clamp(12px, 4vw, 20px); --fifa-action-font: clamp(13px, 4.2vw, 18px); --fifa-action-height: clamp(44px, 12vw, 54px); }
 
-                .lwTitle img { max-width: min(330px, 92vw); height: auto; }
+                    .lwTitle img { max-width: min(330px, 92vw); height: auto; }
 
-                .lwWheelWrap { width: min(94vw, 410px); }
+                    .lwWheelWrap { width: min(94vw, 410px); }
 
-                .lwWheelDisc { --lw-label-distance: -150px; }
+                    .lwWheelDisc { --lw-label-distance: -150px; }
 
-                .lwWheel__label { width: 94px; margin-left: -47px; font-size: clamp(10px, 3.05vw, 13px) !important; line-height: .98; -webkit-text-stroke: .25px rgba(60, 15, 2, .34); }
+                    .lwWheel__label { width: 94px; margin-left: -47px; font-size: clamp(10px, 3.05vw, 13px) !important; line-height: .98; -webkit-text-stroke: .25px rgba(60, 15, 2, .34); }
 
-                    .lwWheel__label[data-prize-index="7"] { width: 86px; margin-left: -43px; font-size: clamp(10px, 2.55vw, 12px) !important; line-height: 1.04; }
+                        .lwWheel__label[data-prize-index="7"] { width: 86px; margin-left: -43px; font-size: clamp(10px, 2.55vw, 12px) !important; line-height: 1.04; }
 
-                .lwPointer { top: 29%; width: 42px; height: 66px; }
+                    .lwPointer { top: 29%; width: 42px; height: 66px; }
 
-                .lwSpinBtn-Con::before { inset: -8px; }
+                    .lwSpinBtn-Con::before { inset: -8px; }
 
-                .lwSpinBtn-Con::after { inset: -4px; border-width: 1px; }
+                    .lwSpinBtn-Con::after { inset: -4px; border-width: 1px; }
 
-                .lwSpinBtn__top { font-size: clamp(14px, 5vw, 19px); }
+                    .lwSpinBtn__top { font-size: clamp(14px, 5vw, 19px); }
 
-                .lwSpinBtn__bottom { font-size: clamp(13px, 4.5vw, 17px); }
+                    .lwSpinBtn__bottom { font-size: clamp(13px, 4.5vw, 17px); }
 
-                .lwChance { width: min(340px, 92vw); padding-inline: 8%; transform: none; background-size: 100% 100%; }
+                    .lwChance { width: min(340px, 92vw); padding-inline: 8%; transform: none; background-size: 100% 100%; }
 
-                .lwChance__main strong { font-size: clamp(25px, 8vw, 34px); }
+                    .lwChance__main strong { font-size: clamp(25px, 8vw, 34px); }
 
-                .lwChance__main span { font-size: clamp(10px, 3.4vw, 14px); }
+                    .lwChance__main span { font-size: clamp(10px, 3.4vw, 14px); }
 
-                .lwSpinActions { width: min(360px, 94vw); gap: 8px; }
+                    .lwSpinActions { width: min(360px, 94vw); gap: 8px; }
 
-                .lwSpinAction { padding-inline: 10px; letter-spacing: 0; }
+                    .lwSpinAction { padding-inline: 10px; letter-spacing: 0; }
 
-                .lwhead__container { min-height: 96px; margin-top: -38px; background-size: auto 96px; }
+                    .lwhead__container { min-height: 96px; margin-top: -38px; background-size: auto 96px; }
 
-                .lwPanel__head h2 { padding-bottom: 12px; font-size: 12px; }
+                    .lwPanel__head h2 { padding-bottom: 12px; font-size: 12px; }
 
-                .lwTnc { margin-top: 40px; }
+                    .lwTnc { margin-top: 40px; }
 
-                .lwTnc__head { width: min(360px, calc(100% - 14px)); min-height: 44px; margin-top: -22px; padding-inline: 32px; }
+                    .lwTnc__head { width: min(360px, calc(100% - 14px)); min-height: 44px; margin-top: -22px; padding-inline: 32px; }
 
-                    .lwTnc__head h2 { font-size: clamp(14px, 4.4vw, 17px); letter-spacing: .02em; }
+                        .lwTnc__head h2 { font-size: clamp(14px, 4.4vw, 17px); letter-spacing: .02em; }
 
-                .lwTnc__list { padding-top: 18px; }
+                    .lwTnc__list { padding-top: 18px; }
 
-                .lwStage::before,
-                .lwStage::after { width: 112px; height: 142px; }
+                    .lwStage::before,
+                    .lwStage::after { width: 112px; height: 142px; }
 
-                .lwPopup.is-open .lwPopup__card { width: min(390px, 94vw, calc(88dvh * 560 / 879)); }
+                    .lwPopup.is-open .lwPopup__card { width: min(390px, 94vw, calc(88dvh * 560 / 879)); }
 
-                .lwPopup__inner { top: calc(235 / 879 * 100%); right: calc(46 / 560 * 100%); bottom: calc(135 / 879 * 100%); left: calc(46 / 560 * 100%); }
+                    .lwPopup__inner { top: calc(235 / 879 * 100%); right: calc(46 / 560 * 100%); bottom: calc(135 / 879 * 100%); left: calc(46 / 560 * 100%); }
 
-                .lwPopup__head { margin-bottom: 8px; }
+                    .lwPopup__head { margin-bottom: 8px; }
 
-                .lwPopup__title { min-width: 148px; padding: 9px 20px; font-size: 13px; }
+                    .lwPopup__title { min-width: 148px; padding: 9px 20px; font-size: 13px; }
 
-                .lwPopup__close { width: 34px; height: 34px; font-size: 26px; }
+                    .lwPopup__close { width: 34px; height: 34px; font-size: 26px; }
 
-                .lwResult__icon { width: 88px; height: 88px; margin: 6px auto 14px; font-size: 38px; border-width: 2px; }
+                    .lwResult__icon { width: 88px; height: 88px; margin: 6px auto 14px; font-size: 38px; border-width: 2px; }
 
-                .lwResult__title { font-size: clamp(28px, 9vw, 38px); }
+                    .lwResult__title { font-size: clamp(28px, 9vw, 38px); }
 
-                .lwResult__reward { margin-top: 12px; padding-top: 12px; font-size: 22px; line-height: 1.15; }
+                    .lwResult__reward { margin-top: 12px; padding-top: 12px; font-size: 22px; line-height: 1.15; }
 
-                .lwResult__desc { margin-top: 8px; font-size: 12px; line-height: 1.45; }
+                    .lwResult__desc { margin-top: 8px; font-size: 12px; line-height: 1.45; }
 
-                .lwResult__action { min-width: 180px; min-height: 46px; margin-top: 20px; font-size: 14px; }
+                    .lwResult__action { min-width: 180px; min-height: 46px; margin-top: 20px; font-size: 14px; }
 
-                .lwSpinAllList { max-height: min(150px, 42dvh); margin-top: 14px; gap: 7px; }
+                    .lwSpinAllList { max-height: min(150px, 42dvh); margin-top: 14px; gap: 7px; }
 
-                .lwSpinAllItem { grid-template-columns: 42px 1fr; min-height: 40px; padding: 7px 10px; gap: 7px; }
+                    .lwSpinAllItem { grid-template-columns: 42px 1fr; min-height: 40px; padding: 7px 10px; gap: 7px; }
 
-                .lwSpinAllItem__index { font-size: 11px; }
+                    .lwSpinAllItem__index { font-size: 11px; }
 
-                .lwSpinAllItem__name { font-size: 12px; line-height: 1.25; }
-            }
+                    .lwSpinAllItem__name { font-size: 12px; line-height: 1.25; }
+                }
 
-            @media (max-width: 380px) {
-                :root { --fifa-spin-bg-size: 98px; --fifa-spin-btn-size: 50px; --fifa-chance-h: 56px; --fifa-action-font: 12px; --fifa-action-height: 42px; }
+                @media (max-width: 380px) {
+                    :root { --fifa-spin-bg-size: 98px; --fifa-spin-btn-size: 50px; --fifa-chance-h: 56px; --fifa-action-font: 12px; --fifa-action-height: 42px; }
 
-                .lwChance__main { gap: 4px; }
+                    .lwChance__main { gap: 4px; }
 
-                    .lwChance__main strong { font-size: 20px; }
+                        .lwChance__main strong { font-size: 20px; }
 
-                    .lwChance__main span { font-size: 9px; }
+                        .lwChance__main span { font-size: 9px; }
 
-                .lwTnc__head h2 { font-size: 13px; }
+                    .lwTnc__head h2 { font-size: 13px; }
 
-                .lwWheelDisc { --lw-label-distance: -37vw; }
+                    .lwWheelDisc { --lw-label-distance: -37vw; }
 
-                .lwWheel__label { width: 80px; margin-left: -40px; font-size: 10px !important; }
+                    .lwWheel__label { width: 80px; margin-left: -40px; font-size: 10px !important; }
 
-                    .lwWheel__label[data-prize-index="7"] { width: 74px; margin-left: -37px; font-size: 12px !important; }
+                        .lwWheel__label[data-prize-index="7"] { width: 74px; margin-left: -37px; font-size: 12px !important; }
 
-                .lwPopup.is-open .lwPopup__card { width: min(350px, 94vw, calc(88dvh * 560 / 879)); }
+                    .lwPopup.is-open .lwPopup__card { width: min(350px, 94vw, calc(88dvh * 560 / 879)); }
 
-                .lwPopup__inner { top: calc(225 / 879 * 100%); right: calc(42 / 560 * 100%); bottom: calc(125 / 879 * 100%); left: calc(42 / 560 * 100%); }
+                    .lwPopup__inner { top: calc(225 / 879 * 100%); right: calc(42 / 560 * 100%); bottom: calc(125 / 879 * 100%); left: calc(42 / 560 * 100%); }
 
-                .lwResult__title { font-size: 30px; }
+                    .lwResult__title { font-size: 30px; }
 
-                .lwResult__reward { font-size: 20px; }
+                    .lwResult__reward { font-size: 20px; }
 
-                .lwResult__action { min-width: 168px; min-height: 44px; font-size: 13px; }
-            }
+                    .lwResult__action { min-width: 168px; min-height: 44px; font-size: 13px; }
+                }
 
-        .lwSpinBtn-Con { animation: lwSpinCorePulse 1.9s ease-in-out infinite; }
+                .lwSpinBtn-Con { animation: lwSpinCorePulse 1.9s ease-in-out infinite; }
 
-            .lwSpinBtn-Con::before { animation: lwCenterGlowSpin 5.5s linear infinite, lwCenterGlowPulse 1.8s ease-in-out infinite; }
+                    .lwSpinBtn-Con::before { animation: lwCenterGlowSpin 5.5s linear infinite, lwCenterGlowPulse 1.8s ease-in-out infinite; }
 
-            .lwSpinBtn-Con::after { animation: lwCenterRingPulse 1.8s ease-in-out infinite; }
+                    .lwSpinBtn-Con::after { animation: lwCenterRingPulse 1.8s ease-in-out infinite; }
 
-        .lwSpinBtn { overflow: hidden; isolation: isolate; }
+                .lwSpinBtn { overflow: hidden; isolation: isolate; }
 
-            .lwSpinBtn::before { content: ""; position: absolute; inset: 0 9% auto 9%; height: 34%; border-radius: 999px; background: linear-gradient( 180deg, rgba(255,255,255,.52) 0%, rgba(255,255,255,.22) 45%, rgba(255,255,255,0) 100% ); pointer-events: none; z-index: 1; mix-blend-mode: screen; }
+                    .lwSpinBtn::before { content: ""; position: absolute; inset: 0 9% auto 9%; height: 34%; border-radius: 999px; background: linear-gradient( 180deg, rgba(255,255,255,.52) 0%, rgba(255,255,255,.22) 45%, rgba(255,255,255,0) 100% ); pointer-events: none; z-index: 1; mix-blend-mode: screen; }
 
-            .lwSpinBtn::after { content: ""; position: absolute; top: -20%; left: -130%; width: 58%; height: 160%; transform: rotate(24deg); background: linear-gradient( 90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.08) 20%, rgba(255,255,255,.72) 50%, rgba(255,255,255,.10) 80%, rgba(255,255,255,0) 100% ); filter: blur(1px); pointer-events: none; z-index: 2; animation: lwSpinSweep 2.6s ease-in-out infinite; }
+                    .lwSpinBtn::after { content: ""; position: absolute; top: -20%; left: -130%; width: 58%; height: 160%; transform: rotate(24deg); background: linear-gradient( 90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.08) 20%, rgba(255,255,255,.72) 50%, rgba(255,255,255,.10) 80%, rgba(255,255,255,0) 100% ); filter: blur(1px); pointer-events: none; z-index: 2; animation: lwSpinSweep 2.6s ease-in-out infinite; }
 
-        .lwSpinBtn__top,
-        .lwSpinBtn__bottom { position: relative; z-index: 3; }
+                .lwSpinBtn__top,
+                .lwSpinBtn__bottom { position: relative; z-index: 3; }
 
-        .lwSpinBtn:hover:not(:disabled)::after { animation-duration: 1.6s; }
+                .lwSpinBtn:hover:not(:disabled)::after { animation-duration: 1.6s; }
 
-        .lwSpinBtn:hover:not(:disabled) { filter: brightness(1.1) saturate(1.12); }
+                .lwSpinBtn:hover:not(:disabled) { filter: brightness(1.1) saturate(1.12); }
 
-        /* =========================================
-   keyframes
-========================================= */
+                /* =========================================
+           keyframes
+        ========================================= */
 
 
-        @keyframes lwWheelSurfacePulse {
-            0%, 100% { opacity: .36; }
-            50% { opacity: .52; }
-        }
+                @keyframes lwWheelSurfacePulse {
+                    0%, 100% { opacity: .36; }
+                    50% { opacity: .52; }
+                }
 
-        @keyframes lwSpinCorePulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.035); }
-        }
+                @keyframes lwSpinCorePulse {
+                    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+                    50% { transform: translate(-50%, -50%) scale(1.035); }
+                }
 
-        @keyframes lwCenterGlowPulse {
-            0%, 100% { opacity: .62; filter: blur(6px); }
-            50% { opacity: .92; filter: blur(8px); }
-        }
+                @keyframes lwCenterGlowPulse {
+                    0%, 100% { opacity: .62; filter: blur(6px); }
+                    50% { opacity: .92; filter: blur(8px); }
+                }
 
-        @keyframes lwCenterRingPulse {
-            0%, 100% { opacity: .72; box-shadow: 0 0 16px rgba(255, 224, 118, .56), inset 0 0 14px rgba(255, 255, 255, .22); }
-            50% { opacity: 1; box-shadow: 0 0 24px rgba(255, 224, 118, .82), 0 0 36px rgba(255, 90, 90, .20), inset 0 0 18px rgba(255, 255, 255, .28); }
-        }
+                @keyframes lwCenterRingPulse {
+                    0%, 100% { opacity: .72; box-shadow: 0 0 16px rgba(255, 224, 118, .56), inset 0 0 14px rgba(255, 255, 255, .22); }
+                    50% { opacity: 1; box-shadow: 0 0 24px rgba(255, 224, 118, .82), 0 0 36px rgba(255, 90, 90, .20), inset 0 0 18px rgba(255, 255, 255, .28); }
+                }
 
-        @keyframes lwSpinSweep {
-            0% { left: -130%; opacity: 0; }
-            10% { opacity: 1; }
-            45% { opacity: 1; }
-            60% { left: 135%; opacity: 0; }
-            100% { left: 135%; opacity: 0; }
-        }
+                @keyframes lwSpinSweep {
+                    0% { left: -130%; opacity: 0; }
+                    10% { opacity: 1; }
+                    45% { opacity: 1; }
+                    60% { left: 135%; opacity: 0; }
+                    100% { left: 135%; opacity: 0; }
+                }
 
-        /* =========================================
-   Shell border-ring shine
-   Better: independent rounded ring
-========================================= */
+                /* =========================================
+           Shell border-ring shine
+           Better: independent rounded ring
+        ========================================= */
 
-        .lwWheelShell { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: var(--lw-wheel-shell-image) center / 100% no-repeat; transform: scale(1.075); }
+                .lwWheelShell { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: var(--lw-wheel-shell-image) center / 100% no-repeat; transform: scale(1.075); }
 
-            .lwWheelShell::before { content: ""; position: absolute; inset: 4%; z-index: 8; pointer-events: none; border-radius: 9999px; border: clamp(14px, 2vw, 24px) solid transparent; background: conic-gradient( from -35deg, transparent 0deg, transparent 32deg, rgba(255, 255, 255, .12) 42deg, rgba(255, 255, 255, .70) 50deg, rgba(255, 220, 100, .22) 60deg, transparent 78deg, transparent 360deg ) border-box; -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); mask-composite: exclude; opacity: 0; mix-blend-mode: screen; filter: blur(.6px); animation: lwShellBorderSweep 3.4s ease-in-out infinite; }
+                    .lwWheelShell::before { content: ""; position: absolute; inset: 4%; z-index: 8; pointer-events: none; border-radius: 9999px; border: clamp(14px, 2vw, 24px) solid transparent; background: conic-gradient( from -35deg, transparent 0deg, transparent 32deg, rgba(255, 255, 255, .12) 42deg, rgba(255, 255, 255, .70) 50deg, rgba(255, 220, 100, .22) 60deg, transparent 78deg, transparent 360deg ) border-box; -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0); mask-composite: exclude; opacity: 0; mix-blend-mode: screen; filter: blur(.6px); animation: lwShellBorderSweep 3.4s ease-in-out infinite; }
 
-            .lwWheelShell::after { z-index: 9; }
+                    .lwWheelShell::after { z-index: 9; }
 
-        @keyframes lwShellBorderSweep {
-            0% { opacity: 0; transform: rotate(0deg); }
+                @keyframes lwShellBorderSweep {
+                    0% { opacity: 0; transform: rotate(0deg); }
 
-            12% { opacity: .85; }
+                    12% { opacity: .85; }
 
-            48% { opacity: .85; }
+                    48% { opacity: .85; }
 
-            68% { opacity: 0; transform: rotate(360deg); }
+                    68% { opacity: 0; transform: rotate(360deg); }
 
-            100% { opacity: 0; transform: rotate(360deg); }
-        }
+                    100% { opacity: 0; transform: rotate(360deg); }
+                }
 
-        .lwWheelShell:after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-image: url('image/fifa/wheel_shell-ribbon.png');z-index:9; background-size:100%; }
-    </style>
+                .lwWheelShell:after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-image: url('image/fifa/wheel_shell-ribbon.png'); z-index: 9; background-size: 100%; }
+    
+        /* TURBO AUTO-SPIN */
+        .lwTurbo { position: relative; z-index: 4; width: min(560px, 92%); margin: 14px auto 0; text-align: center; }
+        .lwTurbo__speeds { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 7px 14px; border: 1px solid rgba(53, 147, 255, .34); border-radius: 16px; background: rgba(2, 20, 43, .82); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 12px 24px rgba(0,0,0,.28); }
+        .lwTurbo__label { display: inline-flex; align-items: center; gap: 5px; margin-right: 4px; color: #ffd54d; font-size: 16px; font-weight: 1000; font-style: italic; letter-spacing: .08em; white-space: nowrap; }
+        .lwTurbo__bolt { font-style: normal; }
+        .lwTurbo__speed { min-width: 70px; height: 40px; padding: 0 14px; border: 3px solid #f5b900; border-radius: 999px; color: #fff; background: linear-gradient(180deg,#2d83d9 0%,#0959ad 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.24),0 4px 0 #063d78; font-size: 22px; font-weight: 1000; cursor: pointer; transition: transform .15s ease, filter .15s ease, box-shadow .15s ease; }
+        .lwTurbo__speed:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
+        .lwTurbo__speed.is-active { background: linear-gradient(180deg,#4b9bf0 0%,#1267c4 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.34),0 4px 0 #063d78,0 0 18px rgba(255,211,63,.42); }
+        .lwTurbo__actions { display: grid; grid-template-columns: 1fr 1.35fr; gap: 16px; width: min(360px, 86%); margin: 14px auto 0; }
+        .lwTurbo__stop,.lwTurbo__skip { min-height: 48px; border: 3px solid #f5b900; border-radius: 999px; color: #fff; font-size: 20px; font-weight: 1000; letter-spacing: .03em; cursor: pointer; box-shadow: inset 0 2px 0 rgba(255,255,255,.28),0 5px 0 rgba(80,40,0,.45); }
+        .lwTurbo__stop { background: linear-gradient(180deg,#ff5445 0%,#d92722 100%); }
+        .lwTurbo__skip { background: linear-gradient(180deg,#ffc928 0%,#e29a00 100%); }
+        .lwTurbo__stop:disabled,.lwTurbo__skip:disabled,.lwTurbo__speed:disabled { cursor: not-allowed; filter: grayscale(.4) brightness(.68); opacity: .75; }
+        .lwTurbo__status { min-height: 18px; margin: 8px 0 0; color: rgba(255,255,255,.82); font-size: 12px; }
+        .lwTurbo.is-running .lwTurbo__speeds { box-shadow: inset 0 1px 0 rgba(255,255,255,.08),0 12px 24px rgba(0,0,0,.28),0 0 24px rgba(45,131,217,.28); }
+        .lwTurboSummary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:16px auto 6px; }
+        .lwTurboSummary__item { padding:12px 10px; border:1px solid rgba(82,154,255,.28); border-radius:14px; background:rgba(3,24,62,.58); }
+        .lwTurboSummary__value { display:block; color:#ffd95a; font-size:28px; font-weight:1000; line-height:1; }
+        .lwTurboSummary__label { display:block; margin-top:5px; color:rgba(255,255,255,.78); font-size:11px; text-transform:uppercase; letter-spacing:.06em; }
+        @media (max-width:767px){ .lwTurbo{width:min(360px,94vw);margin-top:10px}.lwTurbo__speeds{gap:6px;padding:6px 8px;min-height:50px}.lwTurbo__label{font-size:12px;margin-right:0}.lwTurbo__speed{min-width:52px;height:34px;padding:0 8px;border-width:2px;font-size:16px}.lwTurbo__actions{margin-top:10px;gap:10px}.lwTurbo__stop,.lwTurbo__skip{min-height:42px;border-width:2px;font-size:15px}.lwTurbo__status{font-size:10px}}
+</style>
 </head>
 
 <body>
@@ -775,14 +796,19 @@
 
 
 
-                <div class="lwSpinActions">
-
-                    <button class="lwSpinAction lwSpinAction--all" id="lwSpinAllBtn" type="button">
-                        Spin All
-                    </button>
-                    <button class="lwSpinAction lwSpinAction--single" id="lwSpinBtn" type="button">
-                        Spin Once
-                    </button>
+                <div class="lwTurbo" id="lwTurboPanel">
+                    <div class="lwTurbo__speeds" role="group" aria-label="Turbo batch size">
+                        <span class="lwTurbo__label"><span class="lwTurbo__bolt">⚡</span> TURBO</span>
+                        <button class="lwTurbo__speed is-active" type="button" data-turbo-speed="1">X1</button>
+                        <button class="lwTurbo__speed" type="button" data-turbo-speed="2">X2</button>
+                        <button class="lwTurbo__speed" type="button" data-turbo-speed="4">X4</button>
+                        <button class="lwTurbo__speed" type="button" data-turbo-speed="8">X8</button>
+                    </div>
+                    <div class="lwTurbo__actions">
+                        <button class="lwTurbo__stop" id="lwTurboStopBtn" type="button" disabled>STOP</button>
+                        <button class="lwTurbo__skip" id="lwTurboSkipBtn" type="button">SKIP ALL</button>
+                    </div>
+                    <p class="lwTurbo__status" id="lwTurboStatus">Select X1, X2, X4 or X8 to start auto spin.</p>
                 </div>
 
                 <p class="lwSpinNote">
@@ -901,6 +927,11 @@
         const centerSpinBtn = document.getElementById("lwCenterSpinBtn");
         const spinBtn = document.getElementById("lwSpinBtn");
         const spinAllBtn = document.getElementById("lwSpinAllBtn");
+        const turboPanel = document.getElementById("lwTurboPanel");
+        const turboSpeedButtons = [...document.querySelectorAll("[data-turbo-speed]")];
+        const turboStopBtn = document.getElementById("lwTurboStopBtn");
+        const turboSkipBtn = document.getElementById("lwTurboSkipBtn");
+        const turboStatus = document.getElementById("lwTurboStatus");
 
         const spinButtons = [centerSpinBtn, spinBtn, spinAllBtn].filter(Boolean);
 
@@ -1033,18 +1064,18 @@
             winnerHighlight.style.setProperty(
                 "--lw-winner-highlight-bg",
                 `
-                                            conic-gradient(
-                                                from ${-halfAngle}deg,
-                                                rgba(255, 241, 178, 0.00) 0deg,
-                                                rgba(255, 224, 140, 0.08) ${softStart}deg,
-                                                rgba(245, 206, 108, 0.22) ${glowStart}deg,
-                                                rgba(255, 239, 178, 0.34) ${glowCenter}deg,
-                                                rgba(245, 206, 108, 0.22) ${glowEnd}deg,
-                                                rgba(255, 224, 140, 0.08) ${softEnd}deg,
-                                                rgba(255, 241, 178, 0.00) ${segmentAngle}deg,
-                                                transparent ${segmentAngle}deg 360deg
-                                            )
-                                        `
+                                                conic-gradient(
+                                                    from ${-halfAngle}deg,
+                                                    rgba(255, 241, 178, 0.00) 0deg,
+                                                    rgba(255, 224, 140, 0.08) ${softStart}deg,
+                                                    rgba(245, 206, 108, 0.22) ${glowStart}deg,
+                                                    rgba(255, 239, 178, 0.34) ${glowCenter}deg,
+                                                    rgba(245, 206, 108, 0.22) ${glowEnd}deg,
+                                                    rgba(255, 224, 140, 0.08) ${softEnd}deg,
+                                                    rgba(255, 241, 178, 0.00) ${segmentAngle}deg,
+                                                    transparent ${segmentAngle}deg 360deg
+                                                )
+                                            `
             );
         }
         function escapeHTML(value) {
@@ -1101,10 +1132,10 @@
                 const darkClass = shouldUseDarkText(index) ? " is-dark" : "";
 
                 return `
-            <div class="lwWheel__label${darkClass}" data-prize-index="${index}" style="transform: rotate(${labelAngle}deg) translateY(var(--lw-label-distance));">
-                ${formatWheelLabel(labelText)}
-            </div>
-        `;
+                <div class="lwWheel__label${darkClass}" data-prize-index="${index}" style="transform: rotate(${labelAngle}deg) translateY(var(--lw-label-distance));">
+                    ${formatWheelLabel(labelText)}
+                </div>
+            `;
             }).join("");
         }
 
@@ -1164,45 +1195,45 @@
         function renderHistoryList() {
             if (!historyRecords.length) {
                 historyList.innerHTML = `
-                <div class="lwHistoryEmpty">
-                    No spin records yet.<br>
-                    Spin the wheel to create your first record.
-                </div>
-            `;
+                    <div class="lwHistoryEmpty">
+                        No spin records yet.<br>
+                        Spin the wheel to create your first record.
+                    </div>
+                `;
                 return;
             }
 
             historyList.innerHTML = `
-            <div class="lwHistoryTable">
-                <div class="lwHistoryTable__head">
-                    <div>No.</div>
-                    <div>Date Time</div>
-                    <div>Prize</div>
-                </div>
+                <div class="lwHistoryTable">
+                    <div class="lwHistoryTable__head">
+                        <div>No.</div>
+                        <div>Date Time</div>
+                        <div>Prize</div>
+                    </div>
 
-                <div class="lwHistoryTable__body">
-                    ${historyRecords.map((record, index) => {
+                    <div class="lwHistoryTable__body">
+                        ${historyRecords.map((record, index) => {
                 const recordNo = historyRecords.length - index;
 
                 return `
-                            <div class="lwHistoryTable__row">
-                                <div class="lwHistoryTable__no">
-                                    #${String(recordNo).padStart(2, "0")}
-                                </div>
+                                <div class="lwHistoryTable__row">
+                                    <div class="lwHistoryTable__no">
+                                        #${String(recordNo).padStart(2, "0")}
+                                    </div>
 
-                                <div class="lwHistoryTable__time">
-                                    ${record.time}
-                                </div>
+                                    <div class="lwHistoryTable__time">
+                                        ${record.time}
+                                    </div>
 
-                                <div class="lwHistoryTable__prize">
-                                    ${record.reward}
+                                    <div class="lwHistoryTable__prize">
+                                        ${record.reward}
+                                    </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
             }).join("")}
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
         }
 
 
@@ -1292,18 +1323,18 @@
                 const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
                 return `
-                                                    <span
-                                                        class="lwPopupConfettiPiece ${shape}"
-                                                        style="
-                                                            animation-delay: ${delay}s;
-                                                            animation-duration: ${duration}s;
-                                                            --confetti-x: ${x}px;
-                                                            --confetti-y: ${y}px;
-                                                            --confetti-rotate: ${rotate}deg;
-                                                            --confetti-color: ${color};
-                                                        "
-                                                    ></span>
-                                                `;
+                                                        <span
+                                                            class="lwPopupConfettiPiece ${shape}"
+                                                            style="
+                                                                animation-delay: ${delay}s;
+                                                                animation-duration: ${duration}s;
+                                                                --confetti-x: ${x}px;
+                                                                --confetti-y: ${y}px;
+                                                                --confetti-rotate: ${rotate}deg;
+                                                                --confetti-color: ${color};
+                                                            "
+                                                        ></span>
+                                                    `;
             }).join("");
 
             window.setTimeout(() => {
@@ -1315,18 +1346,18 @@
 
             if (prize.image) {
                 return `
-            <div class="lwResult__icon lwResult__icon--image">
-                <img src="${escapeHTML(prize.image)}" alt="${escapeHTML(prize.name)}">
-            </div>
-        `;
+                <div class="lwResult__icon lwResult__icon--image">
+                    <img src="${escapeHTML(prize.image)}" alt="${escapeHTML(prize.name)}">
+                </div>
+            `;
             }
 
             if (prize.icon) {
                 return `
-            <div class="lwResult__icon">
-                ${prize.icon}
-            </div>
-        `;
+                <div class="lwResult__icon">
+                    ${prize.icon}
+                </div>
+            `;
             }
 
             return "";
@@ -1340,29 +1371,29 @@
             popupTitle.textContent = isLose ? "Result" : "You Won";
 
             popupBody.innerHTML = `
-                                                        <div class="lwResult ${isLose ? "lwResult--lose" : "lwResult--win"}">
-                                                           ${renderPopupPrizeVisual(prize, isLose)}
+                                                            <div class="lwResult ${isLose ? "lwResult--lose" : "lwResult--win"}">
+                                                               ${renderPopupPrizeVisual(prize, isLose)}
 
-                                                            <h3 class="lwResult__title">
-                                                                ${isLose ? "Good Luck" : "Congratulations!"}
-                                                            </h3>
+                                                                <h3 class="lwResult__title">
+                                                                    ${isLose ? "Good Luck" : "Congratulations!"}
+                                                                </h3>
 
-                                                            <div class="lwResult__reward">
-                                                                ${prize.name}
-                                                            </div>
+                                                                <div class="lwResult__reward">
+                                                                    ${prize.name}
+                                                                </div>
 
-                                                            <p class="lwResult__desc">
-                                                                ${isLose
+                                                                <p class="lwResult__desc">
+                                                                    ${isLose
                     ? "Try again and your luck may come next."
                     : "Your reward has been selected. Please claim it according to the event rules."
                 }
-                                                            </p>
+                                                                </p>
 
-                                                            <button class="lwResult__action" type="button" data-close-result>
-                                                                ${isLose ? "Close" : "Claim Now"}
-                                                            </button>
-                                                        </div>
-                                                    `;
+                                                                <button class="lwResult__action" type="button" data-close-result>
+                                                                    ${isLose ? "Close" : "Claim Now"}
+                                                                </button>
+                                                            </div>
+                                                        `;
 
             popup.classList.add("is-open");
             playSound(isLose ? soundLose : soundPopup);
@@ -1401,24 +1432,24 @@
             popupTitle.textContent = "Notice";
 
             popupBody.innerHTML = `
-                    <div class="lwResult lwResult--lose">
-                        <div class="lwResult__icon">
-                            ⚠️
+                        <div class="lwResult lwResult--lose">
+                            <div class="lwResult__icon">
+                                ⚠️
+                            </div>
+
+                            <h3 class="lwResult__title">
+                                Not Enough Spin Chance
+                            </h3>
+
+                            <p class="lwResult__desc">
+                                You do not have enough spin chance to continue.
+                            </p>
+
+                            <button class="lwResult__action" type="button" data-close-result>
+                                Close
+                            </button>
                         </div>
-
-                        <h3 class="lwResult__title">
-                            Not Enough Spin Chance
-                        </h3>
-
-                        <p class="lwResult__desc">
-                            You do not have enough spin chance to continue.
-                        </p>
-
-                        <button class="lwResult__action" type="button" data-close-result>
-                            Close
-                        </button>
-                    </div>
-                `;
+                    `;
 
             popup.classList.add("is-open");
             playSound(soundLose);
@@ -1478,7 +1509,7 @@
 
         spinAllBtn?.addEventListener("click", spinAll);
 
-        function openSpinAllPopup(results) {
+        function openSpinAllPopup(results, showTurboSummary = false) {
             stopSound(soundSpin);
             popup.classList.remove("is-lose");
             popup.classList.add("is-win");
@@ -1486,34 +1517,47 @@
             popupTitle.textContent = "Spin All Result";
 
             popupBody.innerHTML = `
-                                    <div class="lwResult lwResult--win lwResult--spinAll">
-                                        <h3 class="lwResult__title">
-                                            Spin Completed
-                                        </h3>
+                                        <div class="lwResult lwResult--win lwResult--spinAll">
+                                            <h3 class="lwResult__title">
+                                                Spin Completed
+                                            </h3>
 
-                                        <p class="lwResult__desc">
-                                            Your spin results are listed below.
-                                        </p>
+                                            <p class="lwResult__desc">
+                                                ${showTurboSummary ? "Auto spin stopped. Here is your session summary." : "Your spin results are listed below."}
+                                            </p>
 
-                                        <div class="lwSpinAllList is-revealing" data-spin-all-list>
-                                ${results.map((prize, index) => {
+                                            ${showTurboSummary ? `
+                                                <div class="lwTurboSummary">
+                                                    <div class="lwTurboSummary__item">
+                                                        <span class="lwTurboSummary__value">${results.length}</span>
+                                                        <span class="lwTurboSummary__label">Total Spins</span>
+                                                    </div>
+                                                    <div class="lwTurboSummary__item">
+                                                        <span class="lwTurboSummary__value">${results.filter((prize) => prize.type === "win").length}</span>
+                                                        <span class="lwTurboSummary__label">Total Wins</span>
+                                                    </div>
+                                                </div>
+                                            ` : ""}
+
+                                            <div class="lwSpinAllList is-revealing" data-spin-all-list>
+                                    ${results.map((prize, index) => {
                 return `
-                                        <div
-                                            class="lwSpinAllItem ${prize.type === "lose" ? "is-lose" : ""}"
-                                            style="--reveal-index: ${index};"
-                                        >
-                                            <span class="lwSpinAllItem__index">#${String(index + 1).padStart(2, "0")}</span>
-                                            <span class="lwSpinAllItem__name">${prize.name}</span>
-                                        </div>
-                                    `;
+                                            <div
+                                                class="lwSpinAllItem ${prize.type === "lose" ? "is-lose" : ""}"
+                                                style="--reveal-index: ${index};"
+                                            >
+                                                <span class="lwSpinAllItem__index">#${String(index + 1).padStart(2, "0")}</span>
+                                                <span class="lwSpinAllItem__name">${prize.name}</span>
+                                            </div>
+                                        `;
             }).join("")}
 </div>
 
-                                        <button class="lwResult__action" type="button" data-close-result>
-                                            Close
-                                        </button>
-                                    </div>
-                                `;
+                                            <button class="lwResult__action" type="button" data-close-result>
+                                                Close
+                                            </button>
+                                        </div>
+                                    `;
 
             popup.classList.add("is-open");
             const spinAllList = popupBody.querySelector("[data-spin-all-list]");
@@ -1581,7 +1625,144 @@
             }, 4200);
         }
 
-        centerSpinBtn?.addEventListener("click", spinOnce);
+        let turboBatchSize = 1;
+        let turboRunning = false;
+        let turboStopRequested = false;
+        let turboSessionResults = [];
+        let turboTimer = null;
+
+        function setTurboStatus(message) {
+            if (turboStatus) turboStatus.textContent = message;
+        }
+
+        function setTurboControlsRunning(running) {
+            turboPanel?.classList.toggle("is-running", running);
+            if (turboStopBtn) turboStopBtn.disabled = !running;
+            if (turboSkipBtn) turboSkipBtn.disabled = running;
+            turboSpeedButtons.forEach((button) => {
+                button.disabled = running;
+            });
+            centerSpinBtn.disabled = running;
+        }
+
+        function finishTurboSession() {
+            window.clearTimeout(turboTimer);
+            turboTimer = null;
+            turboRunning = false;
+            turboStopRequested = false;
+            isSpinning = false;
+            stopSound(soundSpin);
+            wheel.classList.remove("is-spin-all");
+            setTurboControlsRunning(false);
+
+            const results = [...turboSessionResults];
+            turboSessionResults = [];
+
+            if (!results.length) {
+                setTurboStatus("Auto spin stopped.");
+                return;
+            }
+
+            const wins = results.filter((prize) => prize.type === "win").length;
+            setTurboStatus(`Completed ${results.length} spin(s) with ${wins} win(s).`);
+            openSpinAllPopup(results, true);
+        }
+
+        function runTurboBatch() {
+            if (!turboRunning) return;
+
+            const available = getAvailableSpinCount();
+            if (available <= 0 || turboStopRequested) {
+                finishTurboSession();
+                return;
+            }
+
+            const batchCount = Math.min(turboBatchSize, available);
+            if (!deductSpinChance(batchCount)) {
+                finishTurboSession();
+                return;
+            }
+
+            isSpinning = true;
+            const batchResults = Array.from({ length: batchCount }, () => getPrizeResult());
+            turboSessionResults.push(...batchResults);
+            batchResults.forEach(addHistoryItem);
+
+            const lastPrize = batchResults[batchResults.length - 1];
+            const baseSpin = 360 * (turboBatchSize === 1 ? 2 : 1);
+            const targetRotation = getRotationForPrize(lastPrize);
+            const currentAngle = ((currentRotation % 360) + 360) % 360;
+            const angleToTarget = (targetRotation - currentAngle + 360) % 360;
+            currentRotation += baseSpin + angleToTarget;
+
+            wheel.classList.add("is-spin-all");
+            wheel.style.transform = `rotate(${currentRotation}deg)`;
+            setTurboStatus(`Auto spinning X${turboBatchSize} · ${turboSessionResults.length} spin(s) completed`);
+
+            turboTimer = window.setTimeout(() => {
+                playWinnerHighlight(lastPrize);
+                if (lastPrize.type === "win") playShellJackpot();
+                isSpinning = false;
+
+                if (turboStopRequested || getAvailableSpinCount() <= 0) {
+                    finishTurboSession();
+                    return;
+                }
+
+                runTurboBatch();
+            }, 620);
+        }
+
+        function startTurbo(batchSize = turboBatchSize) {
+            if (turboRunning || isSpinning) return;
+            if (getAvailableSpinCount() <= 0) {
+                openInsufficientSpinPopup();
+                return;
+            }
+
+            turboBatchSize = batchSize;
+            turboSessionResults = [];
+            turboStopRequested = false;
+            turboRunning = true;
+            playSound(soundSpin);
+            setTurboControlsRunning(true);
+            setTurboStatus(`Starting auto spin X${turboBatchSize}...`);
+            runTurboBatch();
+        }
+
+        function skipAllTurbo() {
+            if (turboRunning || isSpinning) return;
+            const count = getAvailableSpinCount();
+            if (count <= 0) {
+                openInsufficientSpinPopup();
+                return;
+            }
+
+            deductSpinChance(count);
+            const results = Array.from({ length: count }, () => getPrizeResult());
+            results.forEach(addHistoryItem);
+            const wins = results.filter((prize) => prize.type === "win").length;
+            setTurboStatus(`Skipped ${count} spin(s) with ${wins} win(s).`);
+            openSpinAllPopup(results, true);
+        }
+
+        turboSpeedButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                turboBatchSize = Number(button.dataset.turboSpeed) || 1;
+                turboSpeedButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+                startTurbo(turboBatchSize);
+            });
+        });
+
+        turboStopBtn?.addEventListener("click", () => {
+            if (!turboRunning) return;
+            turboStopRequested = true;
+            turboStopBtn.disabled = true;
+            setTurboStatus("Stopping after the current batch...");
+        });
+
+        turboSkipBtn?.addEventListener("click", skipAllTurbo);
+        centerSpinBtn?.addEventListener("click", () => startTurbo(turboBatchSize));
         spinBtn?.addEventListener("click", spinOnce);
     </script>
 </body>
