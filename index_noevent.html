@@ -18,7 +18,7 @@
         .lwHeader { position: relative; z-index: 1; margin: 0 0 22px; text-align: center }
         .lwTitle { margin: 10px 0 6px; font-family: var(--lw-font-display); font-size: clamp(46px,5.8vw,84px); line-height: .9; letter-spacing: .015em; background: var(--lw-title-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 18px rgba(245,206,108,.22)) }
         .lwSubtitle { max-width: 580px; margin: 0 auto; color: var(--lw-text-soft); font-size: 15px; text-shadow: 0 2px 10px rgba(0,0,0,.65) }
-        .lwLayout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(560px,720px) minmax(230px,460px); gap: 24px; align-items: center; max-width: 1080px; margin: 0 auto }
+        .lwLayout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(560px,720px) minmax(230px,460px); gap: 24px; /*align-items: center;*/ max-width: 1080px; margin: 0 auto }
         .lwPanel { position: relative; height: 560px; min-height: 0; padding: 18px; display: flex; flex-direction: column; border: 1px solid var(--lw-border-strong); border-radius: var(--lw-radius); background: var(--lw-panel-bg); box-shadow: var(--lw-shadow-panel); backdrop-filter: blur(14px) }
             .lwPanel::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(245,206,108,.12); border-radius: calc(var(--lw-radius) - 8px); pointer-events: none }
             .lwPanel .lwHistoryList { min-height: 0; overflow-y: auto; padding-right: 6px; height: 100%; }
@@ -114,10 +114,10 @@
             .lwSpinAction:disabled { cursor: not-allowed; filter: brightness(.68) saturate(.9); }
         .lwSpinAction--single { background-image: url('image/fifa/img-btn-red.png'); }
         .lwSpinAction--all { background-image: url('image/fifa/img-btn-green.png'); filter: drop-shadow(0 18px 22px rgba(0, 0, 0, .48)) drop-shadow(0 0 22px rgba(245, 206, 108, .28)); }
-        .lwSpinNote { width: auto; font-size: 22px; }
+        .lwSpinNote { width: auto; font-size: 11px; }
 
 
-        .lwSpinNote { position: relative; z-index: 3; width: min(420px, 92%); margin: 10px auto 0; color: var(--lw-text); font-size: 11px; line-height: 1.35; text-align: center; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.58); }
+        .lwSpinNote { position: relative; z-index: 3; width: min(420px, 92%); margin: 10px auto 0; color: var(--lw-text); font-size: 20px; line-height: 1.35; text-align: center; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.58); }
         .lwSpinActions { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: min(420px,92%); margin: 16px auto 0 }
         .lwSpinAction { min-height: 54px; border: 1px solid var(--lw-border-light); border-radius: 999px; font-size: 15px; font-weight: 1000; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; transition: transform var(--lw-transition-fast), filter var(--lw-transition-fast), box-shadow var(--lw-transition-fast), opacity var(--lw-transition-fast); }
             .lwSpinAction:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.05) }
@@ -365,7 +365,25 @@
         }
 
         /* TURBO AUTO-SPIN — RED / GOLD / BLACK */
-        .lwTurbo { position: relative; z-index: 4; width: min(560px, 92%); margin: 14px auto 0; text-align: center; }
+
+        .lwSpinActions:has(#lwSpinAllBtn[hidden]) { grid-template-columns: 1fr; }
+            .lwSpinActions:has(#lwSpinAllBtn[hidden]) #lwSpinBtn { width: 100%; }
+        .lwTurbo { position: relative; z-index: 4; width: min(560px, 92%); margin: 14px auto 0; text-align: center; transform-origin: top center; will-change: transform, opacity, clip-path; }
+            .lwTurbo[hidden] { display: none !important; }
+            .lwTurbo.is-selecting { animation: lwTurboSlideIn .42s cubic-bezier(.2,.82,.25,1) both; }
+            .lwTurbo.is-closing { animation: lwTurboSlideOut .26s ease-in both; pointer-events: none; }
+
+        @keyframes lwTurboSlideIn {
+            0% { opacity: 0; transform: translateY(-34px) scaleY(.82); clip-path: inset(0 0 100% 0 round 16px); }
+            65% { opacity: 1; transform: translateY(4px) scaleY(1.015); clip-path: inset(0 0 0 0 round 16px); }
+            100% { opacity: 1; transform: translateY(0) scaleY(1); clip-path: inset(0 0 0 0 round 16px); }
+        }
+
+        @keyframes lwTurboSlideOut {
+            0% { opacity: 1; transform: translateY(0) scaleY(1); clip-path: inset(0 0 0 0 round 16px); }
+            100% { opacity: 0; transform: translateY(-24px) scaleY(.88); clip-path: inset(0 0 100% 0 round 16px); }
+        }
+
         .lwTurbo__speeds { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 7px 14px; border: 1px solid rgba(245, 206, 108, .38); border-radius: 16px; background: linear-gradient(180deg, rgba(35, 8, 12, .94), rgba(8, 5, 7, .92)); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 12px 24px rgba(0,0,0,.34), 0 0 18px rgba(167,52,71,.12); }
         .lwTurbo__label { display: inline-flex; align-items: center; gap: 5px; margin-right: 4px; color: #ffd96b; font-size: 16px; font-weight: 1000; font-style: italic; letter-spacing: .08em; white-space: nowrap; text-shadow: 0 2px 8px rgba(0,0,0,.5); }
         .lwTurbo__bolt { font-style: normal; }
@@ -373,6 +391,10 @@
             .lwTurbo__speed:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.12); }
             .lwTurbo__speed.is-active { color: #fff8d2; background: linear-gradient(180deg,#f14751 0%,#a60d24 58%,#5d0612 100%); box-shadow: inset 0 2px 0 rgba(255,255,255,.28), 0 4px 0 #4d0711, 0 0 18px rgba(245,206,108,.38); }
         .lwTurbo__actions { display: grid; grid-template-columns: 1fr 1.35fr; gap: 16px; width: min(360px, 86%); margin: 14px auto 0; }
+            .lwTurbo__actions[hidden], .lwTurbo__select-actions[hidden] { display: none !important; }
+        .lwTurbo__select-actions { width: min(220px, 70%); margin: 14px auto 0; }
+        .lwTurbo__cancel { width: 100%; min-height: 46px; border: 2px solid rgba(245,206,108,.72); border-radius: 999px; color: #fff4cf; background: linear-gradient(180deg,#4a4b51 0%,#202126 58%,#0c0d10 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 5px 0 rgba(0,0,0,.45); font-size: 17px; font-weight: 1000; letter-spacing: .05em; cursor: pointer; }
+            .lwTurbo__cancel:hover { filter: brightness(1.12); transform: translateY(-1px); }
         .lwTurbo__stop, .lwTurbo__skip { min-height: 48px; border: 3px solid #e9b73c; border-radius: 999px; color: #fff; font-size: 20px; font-weight: 1000; letter-spacing: .03em; cursor: pointer; box-shadow: inset 0 2px 0 rgba(255,255,255,.24), 0 5px 0 rgba(55,20,0,.55); }
         .lwTurbo__stop { background: linear-gradient(180deg,#ff544f 0%,#b81028 62%,#6b0715 100%); }
         .lwTurbo__skip { color: #3b1800; background: linear-gradient(180deg,#fff0a0 0%,#f2c84d 48%,#b97812 100%); }
@@ -434,19 +456,28 @@
 
 
 
-                <div class="lwTurbo" id="lwTurboPanel">
+                <div class="lwSpinActions" id="lwSpinActions">
+                    <button class="lwSpinAction lwSpinAction--all" id="lwSpinAllBtn" type="button">
+                        Spin All
+                    </button>
+                    <button class="lwSpinAction lwSpinAction--single" id="lwSpinBtn" type="button">
+                        Spin Once
+                    </button>
+                </div>
+
+                <div class="lwTurbo" id="lwTurboPanel" hidden>
                     <div class="lwTurbo__speeds" role="group" aria-label="Turbo batch size">
                         <span class="lwTurbo__label"><span class="lwTurbo__bolt">⚡</span> TURBO</span>
-                        <button class="lwTurbo__speed is-active" type="button" data-turbo-speed="1">X1</button>
+                        <button class="lwTurbo__speed" type="button" data-turbo-speed="1">X1</button>
                         <button class="lwTurbo__speed" type="button" data-turbo-speed="2">X2</button>
                         <button class="lwTurbo__speed" type="button" data-turbo-speed="4">X4</button>
                         <button class="lwTurbo__speed" type="button" data-turbo-speed="8">X8</button>
                     </div>
-                    <div class="lwTurbo__actions">
-                        <button class="lwTurbo__stop" id="lwTurboStopBtn" type="button" disabled>STOP</button>
+                    <div class="lwTurbo__actions" id="lwTurboRunningActions">
+                        <button class="lwTurbo__stop" id="lwTurboStopBtn" type="button">CANCEL</button>
                         <button class="lwTurbo__skip" id="lwTurboSkipBtn" type="button">SKIP ALL</button>
                     </div>
-                    <p class="lwTurbo__status" id="lwTurboStatus" style="display:none;">Select X1, X2, X4 or X8 to start auto spin.</p>
+                    <p class="lwTurbo__status" id="lwTurboStatus">Choose X1, X2, X4 or X8 to start auto spin.</p>
                 </div>
 
                 <p class="lwSpinNote">
@@ -564,6 +595,10 @@
         const spinBtn = document.getElementById("lwSpinBtn");
         const spinAllBtn = document.getElementById("lwSpinAllBtn");
         const turboPanel = document.getElementById("lwTurboPanel");
+        const spinActions = document.getElementById("lwSpinActions");
+        const turboSelectActions = document.getElementById("lwTurboSelectActions");
+        const turboRunningActions = document.getElementById("lwTurboRunningActions");
+        const turboCancelBtn = document.getElementById("lwTurboCancelBtn");
         const turboSpeedButtons = [...document.querySelectorAll("[data-turbo-speed]")];
         const turboStopBtn = document.getElementById("lwTurboStopBtn");
         const turboSkipBtn = document.getElementById("lwTurboSkipBtn");
@@ -1143,7 +1178,48 @@
             }, 1250);
         }
 
-        spinAllBtn?.addEventListener("click", spinAll);
+        function showTurboOptions() {
+            if (turboRunning || isSpinning) return;
+            if (getAvailableSpinCount() <= 0) {
+                openInsufficientSpinPopup();
+                return;
+            }
+
+            spinActions.hidden = true;
+            turboPanel.classList.remove("is-closing");
+            turboPanel.hidden = false;
+            if (turboRunningActions) turboRunningActions.hidden = false;
+            if (turboStopBtn) {
+                turboStopBtn.textContent = "CANCEL";
+                turboStopBtn.disabled = false;
+            }
+            if (turboSkipBtn) turboSkipBtn.disabled = false;
+            turboPanel.classList.remove("is-selecting");
+            void turboPanel.offsetWidth;
+            turboPanel.classList.add("is-selecting");
+            turboSpeedButtons.forEach((button) => button.classList.remove("is-active"));
+            setTurboStatus("Choose X1, X2, X4 or X8 to start auto spin.");
+        }
+
+        function closeTurboOptions() {
+            if (turboRunning || isSpinning || turboPanel.hidden) return;
+
+            turboPanel.classList.remove("is-selecting", "is-running");
+            turboPanel.classList.add("is-closing");
+
+            window.setTimeout(() => {
+                turboPanel.hidden = true;
+                turboPanel.classList.remove("is-closing");
+                if (spinActions) spinActions.hidden = false;
+                if (spinAllBtn) spinAllBtn.hidden = false;
+                if (turboRunningActions) turboRunningActions.hidden = false;
+                if (turboStopBtn) turboStopBtn.textContent = "CANCEL";
+                turboSpeedButtons.forEach((button) => button.classList.remove("is-active"));
+                setTurboStatus("Choose X1, X2, X4 or X8 to start auto spin.");
+            }, 260);
+        }
+
+        spinAllBtn?.addEventListener("click", showTurboOptions);
 
         function openSpinAllPopup(results, showTurboSummary = false) {
             stopSound(soundSpin);
@@ -1217,6 +1293,12 @@
         }
 
         function spinOnce() {
+            if (!turboPanel.hidden && !turboRunning && !isSpinning) {
+                // SPIN NOW / Spin Once should leave Turbo selection mode
+                // and immediately perform one normal spin.
+                closeTurboOptions();
+            }
+
             if (isSpinning) return;
 
             if (getAvailableSpinCount() <= 0) {
@@ -1264,6 +1346,7 @@
         let turboBatchSize = 1;
         let turboRunning = false;
         let turboStopRequested = false;
+        let turboSkipRequested = false;
         let turboSessionResults = [];
         let turboTimer = null;
 
@@ -1273,12 +1356,19 @@
 
         function setTurboControlsRunning(running) {
             turboPanel?.classList.toggle("is-running", running);
-            if (turboStopBtn) turboStopBtn.disabled = !running;
-            if (turboSkipBtn) turboSkipBtn.disabled = running;
+            if (turboSelectActions) turboSelectActions.hidden = running;
+            if (turboRunningActions) turboRunningActions.hidden = false;
+            if (turboStopBtn) {
+                turboStopBtn.textContent = running ? "STOP" : "CANCEL";
+                turboStopBtn.disabled = false;
+            }
+            if (turboSkipBtn) turboSkipBtn.disabled = false;
             turboSpeedButtons.forEach((button) => {
                 button.disabled = running;
             });
             centerSpinBtn.disabled = running;
+            if (spinBtn) spinBtn.disabled = running;
+            if (spinAllBtn) spinAllBtn.disabled = running;
         }
 
         function finishTurboSession() {
@@ -1286,10 +1376,17 @@
             turboTimer = null;
             turboRunning = false;
             turboStopRequested = false;
+            turboSkipRequested = false;
             isSpinning = false;
             stopSound(soundSpin);
             wheel.classList.remove("is-spin-all");
             setTurboControlsRunning(false);
+            turboPanel.hidden = true;
+            turboPanel.classList.remove("is-selecting");
+            if (spinActions) spinActions.hidden = false;
+            if (spinAllBtn) spinAllBtn.hidden = false;
+            if (turboRunningActions) turboRunningActions.hidden = false;
+            if (turboStopBtn) turboStopBtn.textContent = "CANCEL";
 
             const results = [...turboSessionResults];
             turboSessionResults = [];
@@ -1302,6 +1399,16 @@
             const wins = results.filter((prize) => prize.type === "win").length;
             setTurboStatus(`Completed ${results.length} spin(s) with ${wins} win(s).`);
             openSpinAllPopup(results, true);
+        }
+
+        function settleRemainingTurboSpins() {
+            const count = getAvailableSpinCount();
+            if (count <= 0) return;
+
+            deductSpinChance(count);
+            const results = Array.from({ length: count }, () => getPrizeResult());
+            turboSessionResults.push(...results);
+            results.forEach(addHistoryItem);
         }
 
         function runTurboBatch() {
@@ -1340,6 +1447,12 @@
                 if (lastPrize.type === "win") playShellJackpot();
                 isSpinning = false;
 
+                if (turboSkipRequested) {
+                    settleRemainingTurboSpins();
+                    finishTurboSession();
+                    return;
+                }
+
                 if (turboStopRequested || getAvailableSpinCount() <= 0) {
                     finishTurboSession();
                     return;
@@ -1359,7 +1472,9 @@
             turboBatchSize = batchSize;
             turboSessionResults = [];
             turboStopRequested = false;
+            turboSkipRequested = false;
             turboRunning = true;
+            turboPanel.classList.remove("is-selecting");
             playSound(soundSpin);
             setTurboControlsRunning(true);
             setTurboStatus(`Starting auto spin X${turboBatchSize}...`);
@@ -1367,7 +1482,12 @@
         }
 
         function skipAllTurbo() {
-            if (turboRunning || isSpinning) return;
+            if (turboRunning || isSpinning) {
+                turboSkipRequested = true;
+                if (turboSkipBtn) turboSkipBtn.disabled = true;
+                setTurboStatus("Skipping all remaining spins after the current batch...");
+                return;
+            }
             const count = getAvailableSpinCount();
             if (count <= 0) {
                 openInsufficientSpinPopup();
@@ -1379,6 +1499,12 @@
             results.forEach(addHistoryItem);
             const wins = results.filter((prize) => prize.type === "win").length;
             setTurboStatus(`Skipped ${count} spin(s) with ${wins} win(s).`);
+            turboPanel.hidden = true;
+            turboPanel.classList.remove("is-selecting");
+            if (spinActions) spinActions.hidden = false;
+            if (turboSelectActions) turboSelectActions.hidden = false;
+            if (turboRunningActions) turboRunningActions.hidden = false;
+            if (turboStopBtn) turboStopBtn.textContent = "CANCEL";
             openSpinAllPopup(results, true);
         }
 
@@ -1391,14 +1517,18 @@
         });
 
         turboStopBtn?.addEventListener("click", () => {
-            if (!turboRunning) return;
+            if (!turboRunning && !isSpinning) {
+                closeTurboOptions();
+                return;
+            }
+
             turboStopRequested = true;
             turboStopBtn.disabled = true;
             setTurboStatus("Stopping after the current batch...");
         });
 
         turboSkipBtn?.addEventListener("click", skipAllTurbo);
-        centerSpinBtn?.addEventListener("click", () => startTurbo(turboBatchSize));
+        centerSpinBtn?.addEventListener("click", spinOnce);
         spinBtn?.addEventListener("click", spinOnce);
     </script>
 </body>
